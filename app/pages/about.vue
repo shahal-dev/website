@@ -86,7 +86,7 @@ useJsonLd(() => ({
     >
       <MDC
         :value="copy.body"
-        unwrap="p"
+        class="prose prose-sm dark:prose-invert max-w-none text-muted"
       />
 
       <div

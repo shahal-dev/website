@@ -40,7 +40,7 @@ From **Project Settings → API**:
 
 | Variable | Where | Value |
 | --- | --- | --- |
-| `NUXT_PUBLIC_SITE_URL` | Vercel + `.env` | Your live domain, e.g. `https://shahadathshahal.vercel.app` — used for canonical URLs, the sitemap and OG images |
+| `NUXT_PUBLIC_SITE_URL` | Vercel + `.env` | Your live domain, e.g. `https://knowshahal.vercel.app` — used for canonical URLs, the sitemap and OG images |
 | `NUXT_PUBLIC_SUPABASE_URL` | Vercel + `.env` | Project URL |
 | `NUXT_PUBLIC_SUPABASE_ANON_KEY` | Vercel + `.env` | `anon` / publishable key |
 | `SUPABASE_SERVICE_ROLE_KEY` | **local `.env` only** | `service_role` key |
@@ -128,9 +128,10 @@ Carried over from the old site and wired to the live content:
 - Canonical URLs, Open Graph and Twitter card tags on every page.
 - `robots: index, follow, max-image-preview:large` so Google can use large image
   previews.
-- Google Search Console verification, both the meta tag and the
-  `googleda9a048415d588fd.html` file from the previous site — so the existing
-  property stays verified.
+- Google Search Console: add `https://knowshahal.vercel.app` as a property and
+  verify it. The easiest route is the HTML tag method — paste the token into
+  `app/app.vue` as
+  `{ name: 'google-site-verification', content: '<token>' }`.
 - schema.org JSON-LD: `WebSite` sitewide, `Person` on About (job title, socials,
   CASSA affiliation), `WebPage` on the homepage, `ImageObject` +
   `BreadcrumbList` on each photo, `BlogPosting` on posts, `CollectionPage` +
@@ -139,8 +140,8 @@ Carried over from the old site and wired to the live content:
   name instead of the template's branding.
 
 **Set `NUXT_PUBLIC_SITE_URL` in Vercel** — everything above falls back to
-`shahadathshahal.vercel.app` until you do, which would make canonicals point at
-the wrong domain if you use a custom one.
+`knowshahal.vercel.app` until you do, which would make canonicals point at the
+wrong domain if you move to a custom one.
 
 ### If you ever need to revoke access
 

@@ -1,4 +1,4 @@
-# shahadathshahal
+# knowshahal
 
 Personal site of **MD Shahadat Hossain Shahal** — research assistant at the
 Center for Astronomy, Space Science and Astrophysics (CASSA), machine learning

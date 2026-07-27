@@ -12,8 +12,6 @@ useHead({
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { key: 'theme-color', name: 'theme-color', content: color },
-    // Carried over from the previous site so Search Console stays verified.
-    { name: 'google-site-verification', content: 'zDi2OFFJW4nJeSjniuk0AXS-_fy9UbNXFo4K4zQHGAI' },
     { name: 'author', content: 'MD Shahadat Hossain Shahal' }
   ],
   link: [

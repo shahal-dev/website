@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://shahadathshahal.vercel.app',
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://knowshahal.vercel.app',
     name: 'MD Shahadat Hossain Shahal'
   },
 
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     public: {
       supabaseUrl: '',
       supabaseAnonKey: '',
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://shahadathshahal.vercel.app'
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://knowshahal.vercel.app'
     }
   },
 
