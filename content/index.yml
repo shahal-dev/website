@@ -1,120 +1,98 @@
 seo:
-  title: "Emma Thompson - UX/UI Designer"
-  description: "Welcome to my portfolio! I'm Emma Thompson, a UX/UI designer and front-end developer based in Boston. I specialize in creating user-centered digital experiences that are both beautiful and functional."
-title: "Hey, I'm Emma Thompson UX/UI Designer"
-description: "I craft intuitive digital experiences where design meets functionality. Based in Boston, bringing ideas to life through code and creativity."
+  title: "MD Shahadat Hossain Shahal — ML & Astrophysics Research Assistant"
+  description: "I'm Shahal, a research assistant at the Center for Astronomy, Space Science and Astrophysics (CASSA), building deep-learning pipelines for radio galaxies and X-ray galaxy clusters — and photographing the night sky."
+title: "Hi, I'm Shahal."
+tagline: "Exploring the Universe Through Code and Light."
+description: "Research assistant at CASSA, where I build deep-learning pipelines to classify radio galaxies and map galaxy clusters from X-ray data. Full-stack and blockchain developer, and an astrophotographer from Dhaka."
 hero:
   links:
-    - label: "Use this template"
-      to: https://github.com/nuxt-ui-templates/portfolio
+    - label: "Read my work"
+      to: /projects
       color: "neutral"
-  images:
-    - src: /hero/random-1.avif
-      alt: Random Image 1
-    - src: /hero/random-2.avif
-      alt: Random Image 2
-    - src: /hero/random-3.avif
-      alt: Random Image 3
-    - src: /hero/random-4.avif
-      alt: Random Image 4
-    - src: /hero/random-5.avif
-      alt: Random Image 5
-    - src: /hero/random-6.avif
-      alt: Random Image 6
-    - src: /hero/random-7.avif
-      alt: Random Image 7
-    - src: /hero/random-8.avif
-      alt: Random Image 8
-    - src: /hero/random-9.avif
-      alt: Random Image 9
 about:
   title: "About Me"
   description: |
-    As a UX/UI designer and front-end developer with 6 years of experience, I leverage my Boston University Interactive Design degree to craft user-centered digital experiences.
-    My approach blends creative strategy with technical expertise, transforming concepts into functional, purposeful digital products that seamlessly integrate design and technology.
+    I'm **Md. Shahadat Hossain Shahal**, a Computer Science and Engineering undergraduate with a minor in Astronomy & Astrophysics at Independent University, Bangladesh (IUB). My interests lie at the intersection of artificial intelligence, software engineering, and observational astronomy.
+
+    My research focuses on applying deep learning and computer vision to astronomical data, particularly radio galaxy morphology classification and explainable AI. Beyond research, I enjoy building software that supports scientific discovery and developing tools for astrophotography and astronomical image analysis.
+
+    When I'm not coding or conducting research, you'll find me capturing the night sky through astrophotography and sharing the wonders of astronomy through outreach. My long-term goal is to pursue a Ph.D. in Astronomy or Astrophysics and contribute to the next generation of AI-driven astronomical research.
 experience:
   title: Work Experience
   items:
-    - position: "Brand Designer at"
+    - position: "PostBach Research Assistant at"
+      date: "Jan 2026 - Present"
+      company:
+        name: CASSA, IUB
+        logo: "i-lucide-telescope"
+        url: "https://www.iub.edu.bd/"
+        color: "#6366F1"
+    - position: "Undergraduate Research Assistant at"
+      date: "Sept 2025 - Dec 2025"
+      company:
+        name: CASSA, IUB
+        logo: "i-lucide-radio"
+        url: "https://www.iub.edu.bd/"
+        color: "#0EA5E9"
+    - position: "Research Assistant, COLOCAL at"
+      date: "Jan 2025 - Aug 2025"
+      company:
+        name: ICCCAD
+        logo: "i-lucide-leaf"
+        url: "https://icccad.net/"
+        color: "#22C55E"
+    - position: "Research Intern, CAP-RES at"
+      date: "Jun 2024 - Dec 2024"
+      company:
+        name: ICCCAD
+        logo: "i-lucide-waves"
+        url: "https://icccad.net/"
+        color: "#14B8A6"
+    - position: "CEO & Lead Developer at"
+      date: "2022 - Present"
+      company:
+        name: Block Lab
+        logo: "i-lucide-blocks"
+        url: "https://github.com/shahal-dev"
+        color: "#F59E0B"
+    - position: "Volunteer & Astrophotographer at"
       date: "2023 - Present"
       company:
-        name: Nuxt
-        logo: "i-simple-icons-nuxtdotjs"
-        url: "https://nuxt.com"
-        color: "#00DC82"
-    - position: "Assets Designer at"
-      date: "2022 - 2023"
-      company:
-        name: Raycast
-        logo: "i-simple-icons-raycast"
-        url: "https://raycast.com"
-        color: "#FF6363"
-    - position: "Senior UX/UI Designer at"
-      date: "2020 - 2021"
-      company:
-        name: Linear
-        logo: "i-simple-icons-linear"
-        url: "https://linear.app"
-        color: "#5E6AD2"
-testimonials:
-  - quote: "Emma's approach to UX design completely transformed our product. She has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
-    author:
-      name: 'Sarah Chen'
-      description: 'Product Director at Bloom Finance'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Working with Emma was the best decision we made for our startup. She didn't just deliver designs—she challenged our assumptions, conducted thorough user research, and created an experience that truly resonated with our audience. Her technical knowledge of front-end development meant the handoff to our engineering team was seamless."
-    author:
-      name: 'Michael Rodriguez'
-      description: 'Co-founder of Wavelength Music'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Emma stands out in her ability to translate complex sustainability data into intuitive interfaces. Her work on EcoTrack wasn't just visually stunning—it fundamentally changed how our users interact with environmental information. She approaches each problem with both creativity and analytical rigor, which is exactly what we needed."
-    author:
-      name: 'Dr. Aisha Johnson'
-      description: 'Chief Innovation Officer at GreenTech Solutions'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+        name: দূরবিন - Durbin
+        logo: "i-lucide-camera"
+        url: "https://www.facebook.com/shahadatw6"
+        color: "#A855F7"
 blog:
-  title: "Latest Articles"
-  description: "Some of my recent thoughts"
+  title: "Writing"
+  description: "Notes on research, the night sky, and things I build"
 faq:
   title: Frequently Asked Questions
-  description: Answers to common questions about my process and services.
+  description: A few things people usually ask me.
   categories:
-    - title: Services & Process
+    - title: Research
       questions:
-        - label: What services do you offer?
+        - label: What do you actually research?
           content: |
-            I specialize in UX/UI design and front-end development. This includes user research, wireframing, interactive prototyping, creating intuitive user interfaces, building responsive websites and web applications (especially with Vue.js/Nuxt.js), and developing design systems. My goal is to create seamless digital experiences from concept to deployment.
-        - label: What is your design process like?
+            Radio-galaxy morphology. My thesis and the RGC project build semi-supervised deep-learning models — including equivariant CNNs — that classify bent-tail radio AGNs (Wide-Angle Tail and Narrow-Angle Tail sources) from large radio surveys. More recently I've been writing pipelines that turn Chandra X-ray observations of galaxy clusters into spatially-resolved temperature, pressure, and density maps, partly to hunt for radio mini-haloes.
+        - label: Are you open to collaboration?
           content: |
-            My process is collaborative and iterative, typically involving stages like Discovery & Research, Ideation & Prototyping, User Testing, Visual Design, and close collaboration with development teams during implementation. I tailor the process based on project needs, always focusing on user-centered solutions.
-        - label: Do you work with startups?
+            Yes. I'm happy to collaborate on machine learning for astronomical images, radio/X-ray data analysis, or instrument-control software. The fastest way to reach me is email — shahadatw6@gmail.com.
+        - label: Where can I find your publications?
           content: |
-            Absolutely! I enjoy working with startups to help shape their product vision and create user-friendly interfaces from the ground up. I can adapt my process to fit the fast-paced startup environment.
-    - title: Pricing & Timelines
+            On my publications page, on Google Scholar, and via ORCID — all linked in the footer.
+    - title: Engineering
       questions:
-        - label: How much does a project typically cost?
+        - label: What do you build outside research?
           content: |
-            Project costs vary based on scope, complexity, features, and timeline. For comprehensive UX/UI design and front-end development projects, my engagements typically start around $5,000, with average projects ranging between $8,000 and $25,000. For consulting or specific design tasks, my day rate is $700.
-        - label: What are your payment terms?
+            Full-stack web applications — mostly TypeScript, React/Next.js or Vue, Node, and PostgreSQL — plus blockchain systems for document verification and ticketing. Recent work includes an ERP for ICCCAD, the COLOCAL platform, RateMyIUB, and a browser-based telescope control dashboard.
+        - label: What is Block Lab?
           content: |
-            I generally require a 40% deposit to schedule the project and begin work, with the remaining 60% due upon successful project completion and delivery. I accept payments via bank transfer and Stripe.
-        - label: How long does a typical project take?
-          content: |
-            Timelines depend heavily on the project's scope and complexity. Smaller projects might take 3-4 weeks, while larger, more involved projects can range from 2 to 4 months. I always provide a detailed timeline estimate after the initial discovery phase.
-        - label: Do you offer retainers or ongoing support?
-          content: |
-            Yes, for clients needing ongoing design support, feature development, or maintenance, I offer monthly retainer options tailored to specific needs. Let's discuss if this is something you're interested in.
-    - title: About Me
+            A small team I lead, working on blockchain-based document authentication and transparent e-governance for a paperless Bangladesh. The work won a Silver Award and an Award of Distinction at the International Blockchain Olympiad.
+    - title: Astrophotography
       questions:
-        - label: What do you enjoy most about your work?
+        - label: How long have you been shooting the sky?
           content: |
-            I love the challenge of solving complex problems through design and technology. It's incredibly rewarding to see people interact with something I've created and find it genuinely useful and easy to navigate. Bridging the gap between user needs and technical possibilities is what truly excites me.
-        - label: What are your hobbies outside of work?
+            Several years now, mostly from Bangladesh — deep-sky targets like the Horsehead, M81/M82, and the Elephant's Trunk, alongside wide-field Milky Way and lunar work. You can see a selection in the gallery.
+        - label: Do you teach it?
           content: |
-            When I'm not designing or coding, I enjoy exploring Boston's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
+            I share what I've learned through দূরবিন - Durbin outreach programmes and on YouTube — how to start on a budget, what gear actually matters, and how to process what you capture.

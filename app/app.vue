@@ -18,7 +18,7 @@ useHead({
 })
 
 useSeoMeta({
-  titleTemplate: '%s - Nuxt Portfolio Template',
+  titleTemplate: '%s - MD Shahadat Hossain Shahal',
   twitterCard: 'summary_large_image'
 })
 

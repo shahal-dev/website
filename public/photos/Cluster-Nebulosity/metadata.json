@@ -1,0 +1,35 @@
+{
+  "object": "Cluster-Nebulosity",
+  "title": "Cluster-Nebulosity",
+  "slug": "Cluster-Nebulosity",
+  "source": "img-11.JPG",
+  "processedAt": "2026-07-26T21:05:08.423Z",
+  "original": {
+    "width": 2048,
+    "height": 1536,
+    "format": "jpeg"
+  },
+  "versions": {
+    "thumb": {
+      "src": "/photos/Cluster-Nebulosity/thumb.webp",
+      "width": 400,
+      "height": 300,
+      "bytes": 13770
+    },
+    "medium": {
+      "src": "/photos/Cluster-Nebulosity/medium.webp",
+      "width": 1600,
+      "height": 1200,
+      "bytes": 110208
+    },
+    "full": {
+      "src": "/photos/Cluster-Nebulosity/full.jpg",
+      "width": 2048,
+      "height": 1536,
+      "bytes": 229278
+    }
+  },
+  "exif": {
+    "takenAt": "2023-04-13T20:46:30.000Z"
+  }
+}

@@ -10,10 +10,20 @@ if (!page.value) {
   })
 }
 
+const cv = await useContentItem<Record<string, unknown>>('cv-document', 'cv')
+
+// Database copy wins over the checked-in file when the About page has been
+// edited in the admin.
+const copy = await usePageCopy('about', {
+  title: page.value?.title,
+  description: page.value?.description,
+  body: String(page.value?.content || '')
+})
+
 const { global } = useAppConfig()
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = page.value?.seo?.title || copy.value.title
+const description = page.value?.seo?.description || copy.value.description
 
 useSeoMeta({
   title,
@@ -28,8 +38,8 @@ defineOgImage('Portfolio', { title, description })
 <template>
   <UPage v-if="page">
     <UPageHero
-      :title="page.title"
-      :description="page.description"
+      :title="copy.title"
+      :description="copy.description"
       orientation="horizontal"
       :ui="{
         container: 'lg:flex sm:flex-row items-center',
@@ -51,9 +61,45 @@ defineOgImage('Portfolio', { title, description })
       }"
     >
       <MDC
-        :value="page.content"
+        :value="copy.body"
         unwrap="p"
       />
+
+      <div
+        v-if="cv"
+        class="mt-10 border-t border-default pt-10"
+      >
+        <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="text-xl font-medium text-highlighted lg:text-2xl">
+              Curriculum Vitae
+            </h2>
+            <p class="mt-1 text-sm text-muted">
+              The full record — education, research, publications, awards, and projects.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <UButton
+              to="/cv/compact?print"
+              target="_blank"
+              icon="i-lucide-file-text"
+              color="neutral"
+              label="One-page CV"
+            />
+            <UButton
+              to="/cv/full?print"
+              target="_blank"
+              icon="i-lucide-download"
+              color="neutral"
+              variant="subtle"
+              label="Full résumé"
+            />
+          </div>
+        </div>
+
+        <CvDocument :cv="cv" />
+      </div>
+
       <div class="flex flex-row justify-center items-center py-10 -space-x-8">
         <PolaroidItem
           v-for="(image, index) in page.images"

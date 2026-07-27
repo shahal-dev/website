@@ -22,6 +22,19 @@ export default defineNuxtConfig({
     }
   },
 
+  runtimeConfig: {
+    public: {
+      supabaseUrl: '',
+      supabaseAnonKey: ''
+    }
+  },
+
+  routeRules: {
+    // The admin app is private: never rendered ahead of time, never indexed.
+    '/admin/**': { ssr: false, robots: false, index: false },
+    '/api/content/**': { cors: false }
+  },
+
   compatibilityDate: '2026-06-30',
 
   nitro: {
@@ -29,7 +42,8 @@ export default defineNuxtConfig({
       routes: [
         '/'
       ],
-      crawlLinks: true
+      crawlLinks: true,
+      ignore: ['/admin']
     }
   },
 

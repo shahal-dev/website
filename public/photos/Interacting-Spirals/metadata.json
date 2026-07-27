@@ -1,0 +1,32 @@
+{
+  "object": "Interacting-Spirals",
+  "title": "Interacting-Spirals",
+  "slug": "Interacting-Spirals",
+  "source": "img-06.jpg",
+  "processedAt": "2026-07-26T21:04:59.480Z",
+  "original": {
+    "width": 4096,
+    "height": 3576,
+    "format": "jpeg"
+  },
+  "versions": {
+    "thumb": {
+      "src": "/photos/Interacting-Spirals/thumb.webp",
+      "width": 400,
+      "height": 349,
+      "bytes": 7980
+    },
+    "medium": {
+      "src": "/photos/Interacting-Spirals/medium.webp",
+      "width": 1600,
+      "height": 1397,
+      "bytes": 68710
+    },
+    "full": {
+      "src": "/photos/Interacting-Spirals/full.jpg",
+      "width": 4096,
+      "height": 3576,
+      "bytes": 2364247
+    }
+  }
+}

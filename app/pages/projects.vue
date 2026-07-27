@@ -10,9 +10,17 @@ if (!page.value) {
   })
 }
 
-const { data: projects } = await useAsyncData('projects', () => {
-  return queryCollection('projects').all()
-})
+interface ProjectItem {
+  slug?: string
+  title: string
+  description: string
+  image?: string
+  url: string
+  tags?: string[]
+  date?: string
+}
+
+const projects = await useContentItems<ProjectItem>('projects', 'projects')
 
 const { global } = useAppConfig()
 
@@ -52,7 +60,8 @@ defineOgImage('Portfolio', { title, description })
             v-bind="page.links[0]"
           />
           <UButton
-            :to="`mailto:${global.email}`"
+            to="https://github.com/shahal-dev"
+            target="_blank"
             v-bind="page.links[1]"
           />
         </div>
@@ -85,7 +94,7 @@ defineOgImage('Portfolio', { title, description })
         >
           <template #leading>
             <span class="text-sm text-muted">
-              {{ new Date(project.date).getFullYear() }}
+              {{ String(project.date || '').slice(0, 4) }}
             </span>
           </template>
           <template #footer>
@@ -101,10 +110,20 @@ defineOgImage('Portfolio', { title, description })
             </ULink>
           </template>
           <img
+            v-if="project.image"
             :src="project.image"
             :alt="project.title"
             class="object-cover w-full h-48 rounded-lg"
           >
+          <div
+            v-else
+            class="flex h-48 w-full items-center justify-center rounded-lg border border-default bg-elevated/50"
+          >
+            <UIcon
+              name="i-lucide-code-xml"
+              class="size-8 text-muted"
+            />
+          </div>
         </UPageCard>
       </Motion>
     </UPageSection>

@@ -9,16 +9,16 @@ if (!page.value) {
     fatal: true
   })
 }
-const { data: posts } = await useAsyncData('blogs', () =>
-  queryCollection('blog').order('date', 'DESC').all()
-)
-if (!posts.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'blogs posts not found',
-    fatal: true
-  })
+interface PostItem {
+  path: string
+  title: string
+  description: string
+  image?: string
+  date?: string
+  minRead?: number
 }
+
+const posts = await useContentItems<PostItem>('blog-posts', 'posts')
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description

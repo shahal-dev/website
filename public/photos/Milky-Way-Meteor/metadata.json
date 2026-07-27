@@ -1,0 +1,41 @@
+{
+  "object": "Milky-Way-Meteor",
+  "title": "Milky-Way-Meteor",
+  "slug": "Milky-Way-Meteor",
+  "source": "img-16.jpg",
+  "processedAt": "2026-07-26T21:05:29.397Z",
+  "original": {
+    "width": 5927,
+    "height": 4742,
+    "format": "jpeg"
+  },
+  "versions": {
+    "thumb": {
+      "src": "/photos/Milky-Way-Meteor/thumb.webp",
+      "width": 400,
+      "height": 320,
+      "bytes": 6864
+    },
+    "medium": {
+      "src": "/photos/Milky-Way-Meteor/medium.webp",
+      "width": 1600,
+      "height": 1280,
+      "bytes": 158266
+    },
+    "full": {
+      "src": "/photos/Milky-Way-Meteor/full.jpg",
+      "width": 5927,
+      "height": 4742,
+      "bytes": 4200076
+    }
+  },
+  "exif": {
+    "camera": "SONY ILCE-6400",
+    "lens": "56mm F1.4 DC DN | Contemporary 018",
+    "iso": 500,
+    "exposure": 0.00025,
+    "aperture": 2.8,
+    "focalLength": 56,
+    "takenAt": "2023-09-10T16:59:24.000Z"
+  }
+}

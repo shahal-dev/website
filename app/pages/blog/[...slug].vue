@@ -1,15 +1,23 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: page } = await useAsyncData(route.path, () =>
-  queryCollection('blog').path(route.path).first()
-)
+const slug = computed(() => route.path.split('/').filter(Boolean).pop())
+
+const { data: page } = await useAsyncData(route.path, async () => {
+  const remote = await $fetch<{ source: string, item: Record<string, unknown> | null }>(
+    `/api/content/posts/${slug.value}`
+  ).catch(() => null)
+  return (remote?.item as Record<string, unknown>) || null
+})
 if (!page.value) throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
-  queryCollectionItemSurroundings('blog', route.path, {
-    fields: ['description']
-  })
-)
+const { data: surround } = await useAsyncData(`${route.path}-surround`, async () => {
+  const list = await $fetch<{ items: Array<{ path: string, title: string, description: string }> }>(
+    '/api/content/posts'
+  ).catch(() => null)
+  const items = list?.items || []
+  const index = items.findIndex(item => item.path === route.path)
+  return index === -1 ? [] : [items[index - 1] || null, items[index + 1] || null]
+})
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
@@ -88,8 +96,13 @@ const formatDate = (dateString: string) => {
           </div>
         </div>
         <UPageBody class="max-w-3xl mx-auto">
+          <MDC
+            v-if="typeof page.body === 'string'"
+            :value="page.body"
+            class="prose prose-sm dark:prose-invert max-w-none"
+          />
           <ContentRenderer
-            v-if="page.body"
+            v-else-if="page.body"
             :value="page"
           />
 

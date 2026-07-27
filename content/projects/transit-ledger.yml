@@ -1,0 +1,9 @@
+title: "TransitLedger — Train Ticketing Platform"
+description: "A train ticket booking system with real-time seat selection, QR-coded tickets, and an admin dashboard — part of my research on transparent, tamper-proof ticketing with decentralized systems."
+url: "https://github.com/shahal-dev/Transit-Ledger"
+tags:
+  - "Blockchain"
+  - "TypeScript"
+  - "Ticketing"
+  - "Full-stack"
+date: "2025"

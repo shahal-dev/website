@@ -1,0 +1,36 @@
+title: Publications & Awards
+description: Peer-reviewed and preprint work on machine learning for radio astronomy, my undergraduate thesis, and awards along the way.
+links:
+  - label: Email me about a collaboration
+    size: md
+events:
+  - category: Paper
+    title: "RGC: a radio AGN classifier based on deep learning. I. A semi-supervised multiclass model for VLA images"
+    date: "2025-10-01"
+    location: "M. S. Hossain, M. S. H. Shahal, A. Khan, K. M. B. Asad, P. Saikia, F. Akter, A. Ali et al. — accepted, pending publication (arXiv:2510.22190)"
+    url: "https://arxiv.org/abs/2510.22190"
+  - category: Preprint
+    title: "RGC … II. The effect of cluster environment on the bending of radio tails"
+    date: "2026-01-01"
+    location: "In preparation"
+  - category: Preprint
+    title: "MIMIC: Mapping Intra-Cluster Medium In Chandra"
+    date: "2026-01-01"
+    location: "In preparation"
+  - category: Thesis
+    title: "RGC: A Radio AGN Classifier Based on Deep Learning"
+    date: "2025-12-01"
+    location: "Undergraduate thesis, Independent University, Bangladesh"
+    url: "https://scholar.google.com/citations?hl=en&user=NewZCTsAAAAJ&view_op=list_works"
+  - category: Award
+    title: "Silver Award & Award of Distinction — International Blockchain Olympiad"
+    date: "2023-01-01"
+    location: "Blockchain-based document authentication, Block Lab"
+  - category: Award
+    title: "Arrows Scholar — 100% undergraduate scholarship"
+    date: "2022-01-01"
+    location: "Independent University, Bangladesh"
+  - category: Award
+    title: "Vice Chancellor's List — seven-time honoree"
+    date: "2025-01-01"
+    location: "Independent University, Bangladesh"

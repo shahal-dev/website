@@ -29,20 +29,15 @@ const createAuthorSchema = () => z.object({
   avatar: createImageSchema().optional()
 })
 
-const createTestimonialSchema = () => z.object({
-  quote: z.string(),
-  author: createAuthorSchema()
-})
-
 export default defineContentConfig({
   collections: {
     index: defineCollection({
       type: 'page',
       source: 'index.yml',
       schema: z.object({
+        tagline: z.string().optional(),
         hero: z.object({
-          links: z.array(createButtonSchema()),
-          images: z.array(createImageSchema())
+          links: z.array(createButtonSchema())
         }),
         about: createBaseSchema(),
         experience: createBaseSchema().extend({
@@ -57,7 +52,6 @@ export default defineContentConfig({
             })
           }))
         }),
-        testimonials: z.array(createTestimonialSchema()),
         blog: createBaseSchema(),
         faq: createBaseSchema().extend({
           categories: z.array(
@@ -79,7 +73,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
-        image: z.string().nonempty().editor({ input: 'media' }),
+        image: z.string().optional().editor({ input: 'media' }),
         url: z.string().nonempty(),
         tags: z.array(z.string()),
         date: z.date()
@@ -105,18 +99,125 @@ export default defineContentConfig({
         links: z.array(createButtonSchema())
       })
     }),
-    speaking: defineCollection({
+    publications: defineCollection({
       type: 'page',
-      source: 'speaking.yml',
+      source: 'publications.yml',
       schema: z.object({
         links: z.array(createButtonSchema()),
         events: z.array(z.object({
-          category: z.enum(['Live talk', 'Podcast', 'Conference']),
+          category: z.enum(['Paper', 'Preprint', 'Thesis', 'Award']),
           title: z.string(),
           date: z.date(),
           location: z.string(),
           url: z.string().optional()
         }))
+      })
+    }),
+    cv: defineCollection({
+      type: 'data',
+      source: 'cv.yml',
+      schema: z.object({
+        name: z.string(),
+        role: z.string(),
+        summary: z.string(),
+        location: z.string(),
+        phone: z.string().optional(),
+        email: z.string(),
+        links: z.array(z.object({ label: z.string(), url: z.string() })),
+        education: z.array(z.object({
+          institution: z.string(),
+          degree: z.string(),
+          date: z.string(),
+          compact: z.boolean(),
+          details: z.array(z.string())
+        })),
+        experience: z.array(z.object({
+          organisation: z.string(),
+          role: z.string(),
+          date: z.string(),
+          compact: z.boolean(),
+          details: z.array(z.string())
+        })),
+        publications: z.array(z.object({
+          title: z.string(),
+          authors: z.string(),
+          venue: z.string(),
+          date: z.string(),
+          url: z.string().optional(),
+          compact: z.boolean()
+        })),
+        awards: z.array(z.object({
+          title: z.string(),
+          detail: z.string(),
+          date: z.string(),
+          compact: z.boolean()
+        })),
+        skills: z.array(z.object({
+          group: z.string(),
+          compact: z.boolean(),
+          items: z.array(z.string())
+        })),
+        projects: z.array(z.object({
+          title: z.string(),
+          detail: z.string(),
+          url: z.string().optional(),
+          compact: z.boolean()
+        })),
+        teaching: z.array(z.object({
+          title: z.string(),
+          detail: z.string(),
+          date: z.string(),
+          compact: z.boolean()
+        })),
+        outreach: z.array(z.object({
+          title: z.string(),
+          detail: z.string(),
+          compact: z.boolean()
+        })),
+        languages: z.array(z.string())
+      })
+    }),
+    galleryIndex: defineCollection({
+      type: 'page',
+      source: 'gallery.yml',
+      schema: z.object({})
+    }),
+    gallery: defineCollection({
+      type: 'page',
+      source: 'gallery/*.md',
+      schema: z.object({
+        object: z.string().nonempty(),
+        tag: z.string().optional(),
+        // Folder produced by `pnpm photo` — holds thumb.webp / medium.webp / full.jpg.
+        folder: z.string().nonempty(),
+        alt: z.string().nonempty(),
+        featured: z.boolean().default(false),
+        date: z.string().optional(),
+        location: z.string().optional(),
+        // Extra frames of the same object, shown in the carousel.
+        frames: z.array(z.object({
+          folder: z.string().optional(),
+          src: z.string().optional(),
+          caption: z.string().optional()
+        })).optional(),
+        // Professional reference (Hubble, JWST, a survey) for the comparison slider.
+        reference: z.object({
+          src: z.string().nonempty(),
+          label: z.string().optional(),
+          credit: z.string().nonempty(),
+          url: z.string().optional()
+        }).optional(),
+        gear: z.object({
+          telescope: z.string().optional(),
+          camera: z.string().optional(),
+          mount: z.string().optional(),
+          filters: z.string().optional()
+        }).optional(),
+        acquisition: z.object({
+          exposures: z.string().optional(),
+          integration: z.string().optional(),
+          sky: z.string().optional()
+        }).optional()
       })
     }),
     about: defineCollection({

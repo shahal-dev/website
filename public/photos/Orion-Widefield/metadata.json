@@ -1,0 +1,32 @@
+{
+  "object": "Orion-Widefield",
+  "title": "Orion-Widefield",
+  "slug": "Orion-Widefield",
+  "source": "img-09.jpg",
+  "processedAt": "2026-07-26T21:05:04.790Z",
+  "original": {
+    "width": 3137,
+    "height": 1971,
+    "format": "jpeg"
+  },
+  "versions": {
+    "thumb": {
+      "src": "/photos/Orion-Widefield/thumb.webp",
+      "width": 400,
+      "height": 251,
+      "bytes": 26164
+    },
+    "medium": {
+      "src": "/photos/Orion-Widefield/medium.webp",
+      "width": 1600,
+      "height": 1005,
+      "bytes": 217252
+    },
+    "full": {
+      "src": "/photos/Orion-Widefield/full.jpg",
+      "width": 3137,
+      "height": 1971,
+      "bytes": 1289269
+    }
+  }
+}

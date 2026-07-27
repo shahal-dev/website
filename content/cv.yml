@@ -1,0 +1,196 @@
+name: MD. Shahadat Hossain Shahal
+role: Research Assistant — Radio Astronomy & Machine Learning
+summary: Research Assistant at the Center for Astronomy, Space Science and Astrophysics (CASSA), working at the intersection of radio astronomy and machine learning — deep-learning classification of radio-galaxy morphology from VLA survey imagery, X-ray analysis of galaxy clusters, and radio-telescope instrumentation. Advanced Python programmer experienced across the astronomical data pipeline.
+location: Dhaka 1212, Bangladesh
+phone: "+880 1877585773"
+email: shahadatw6@gmail.com
+links:
+  - label: ORCID 0009-0001-5495-2619
+    url: https://orcid.org/0009-0001-5495-2619
+  - label: Google Scholar
+    url: https://scholar.google.com/citations?hl=en&user=NewZCTsAAAAJ
+  - label: github.com/shahal-dev
+    url: https://github.com/shahal-dev
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/shahadatw6/
+
+skills:
+  - group: Programming languages
+    compact: true
+    items: [Python (advanced), C / C++, JavaScript / TypeScript, SQL, Bash]
+  - group: Astronomical analysis software & tools
+    compact: true
+    items: [CASA (Common Astronomy Software Applications), Measurement Sets (tart2ms), aperture-synthesis imaging, Friendly VRI (interferometer simulation), Astropy, FITS image processing, Chandra / CIAO X-ray analysis, VLA radio-survey data, plate solving, telescope control]
+  - group: Machine learning
+    compact: true
+    items: [PyTorch, e2cnn (equivariant CNNs), scikit-learn, XGBoost, OpenCV, model fine-tuning]
+  - group: Development & platforms
+    compact: true
+    items: [Git, Linux, Docker, NumPy / SciPy / Matplotlib, Jupyter, HPC clusters]
+
+experience:
+  - organisation: Center for Astronomy, Space Science and Astrophysics (CASSA), IUB
+    role: Research Assistant (PostBach)
+    date: Jan 2026 – Present
+    compact: true
+    details:
+      - Extending the RGC deep-learning radio-AGN classifier to jointly classify sFRI and sFRII sources within a single model.
+      - Building a Python pipeline to generate temperature maps from Chandra X-ray images of galaxy clusters.
+      - Contributing to the center's upcoming instrument acquisition and observatory setup decisions.
+  - organisation: Center for Astronomy, Space Science and Astrophysics (CASSA), IUB
+    role: Undergraduate Research Assistant
+    date: Sep 2025 – Dec 2025
+    compact: true
+    details:
+      - Developed equivariant-CNN (e2cnn) pipelines classifying Wide-Angle-Tail (WAT) and Narrow-Angle-Tail (NAT) radio galaxies from large-scale VLA survey data.
+      - Built a system to detect radio mini-haloes in X-ray galaxy-cluster images.
+      - Helped build and operate TART (Transient Array Radio Telescope), Bangladesh's first radio telescope — a 24-element GPS/GNSS aperture-synthesis array (276 baselines, L1 1.575 GHz, full-sky image every minute) at IUB CORE; fabricated the antenna-array structure (IUB Fab Lab) and worked with the open-source TART software stack (tart2ms, CASA-based synthesis imaging) to calibrate and image visibility data.
+  - organisation: International Centre for Climate Change and Development (ICCCAD)
+    role: Research Assistant, COLOCAL Project
+    date: Jan 2025 – Aug 2025
+    compact: false
+    details:
+      - Developed the web application and content platform for the COLOCAL project.
+      - Gained extensive experience in field work and project management.
+  - organisation: International Centre for Climate Change and Development (ICCCAD)
+    role: Research Intern, CAP-RES Project
+    date: Jun 2024 – Dec 2024
+    compact: false
+    details:
+      - Developed an ERP system for the organisation and a machine-learning methodology for river-erosion detection.
+      - Gained hands-on experience in research methodology and documentation.
+  - organisation: Block Lab
+    role: CEO & Lead Developer
+    date: Jun 2022 – Present
+    compact: false
+    details:
+      - Developed a blockchain-based solution for document authentication.
+      - Built transparent e-governance solutions on blockchain and researched interoperability for a paperless society in Bangladesh.
+  - organisation: দূরবিন - Durbin
+    role: National Volunteer & Astrophotographer
+    date: Jun 2023 – Present
+    compact: false
+    details:
+      - Astrophotography and astronomical image processing for public outreach.
+      - Outreach and event coordination for public astronomy programmes.
+
+education:
+  - institution: Independent University, Bangladesh — Dhaka
+    degree: BSc Computer Science & Engineering; Minor in Astronomy & Astrophysics
+    date: 2022 – 2025
+    compact: true
+    details:
+      - GPA 3.66. Arrows Scholar (100% scholarship); seven-time Vice Chancellor's List.
+      - "Thesis: Machine-Learning Approaches for Radio-Galaxy Morphology Classification."
+      - "Relevant coursework: Radio Astronomy, Introduction to Astrophysics, Planets & Planetary Systems, Atmospheric & Space Physics, Artificial Intelligence, Neural Networks, Image Processing."
+  - institution: Notre Dame College, Dhaka
+    degree: Higher Secondary School Certificate
+    date: 2018 – 2020
+    compact: false
+    details:
+      - GPA 5.00.
+
+publications:
+  - title: "RGC: a radio AGN classifier based on deep learning. I. A semi-supervised multiclass model for VLA images"
+    authors: M. S. Hossain, M. S. H. Shahal, A. Khan, K. M. B. Asad, P. Saikia, F. Akter, A. Ali et al.
+    venue: Accepted, pending publication — arXiv:2510.22190
+    date: "2025"
+    url: https://arxiv.org/abs/2510.22190
+    compact: true
+  - title: "RGC … II. The effect of cluster environment on the bending of radio tails"
+    authors: ""
+    venue: In preparation
+    date: "2026"
+    compact: true
+  - title: "MIMIC: Mapping Intra-Cluster Medium In Chandra"
+    authors: ""
+    venue: In preparation
+    date: "2026"
+    compact: true
+  - title: "RGC: A Radio AGN Classifier Based on Deep Learning"
+    authors: M. S. H. Shahal
+    venue: Undergraduate thesis, Independent University, Bangladesh
+    date: "2025"
+    url: https://scholar.google.com/citations?hl=en&user=NewZCTsAAAAJ
+    compact: false
+
+teaching:
+  - title: Teaching Assistant — CASSA Workshop 1
+    detail: Array Radio Telescopes
+    date: May 2025
+    compact: true
+  - title: Teaching Assistant — CASSA Workshop 2
+    detail: Building and making TART operational
+    date: "2025"
+    compact: true
+  - title: Instructor — Durbin Workshop 2
+    detail: From Cosmic History to Deep-Sky Imaging
+    date: "2025"
+    compact: true
+  - title: Student on Duty — CSC 211 Algorithms, CSE Department, IUB
+    detail: Ran tutorial classes and organised study materials and course content.
+    date: May 2023 – Jun 2024
+    compact: false
+  - title: Workshop Student on Duty — Automate Your Day with Python, IUB
+    detail: Taught programming and Python basics to faculty across non-engineering schools.
+    date: Jun 2023 – Dec 2023
+    compact: false
+
+awards:
+  - title: Silver Award & Award of Distinction — International Blockchain Olympiad
+    detail: Blockchain-based document authentication, Block Lab
+    date: "2023"
+    compact: true
+  - title: Arrows Scholar — 100% undergraduate scholarship
+    detail: Independent University, Bangladesh
+    date: "2022"
+    compact: true
+  - title: Vice Chancellor's List — seven-time honoree
+    detail: Independent University, Bangladesh
+    date: 2022 – 2025
+    compact: false
+
+projects:
+  - title: RGC — Radio Galaxy Classifier
+    detail: Semi-supervised, rotation-equivariant deep-learning model classifying bent radio AGNs (WAT/NAT) from VLA survey imagery.
+    url: https://github.com/shahal-dev/RGC
+    compact: false
+  - title: MIMIC — Galaxy Cluster X-ray Temperature Mapping
+    detail: Chandra ACIS pipeline producing spatially-resolved temperature, pressure, and density maps to search for radio mini-haloes.
+    url: https://github.com/shahal-dev/temp_mimic
+    compact: false
+  - title: TART — Transient Array Radio Telescope
+    detail: Bangladesh's first radio telescope; a 24-element GPS/GNSS aperture-synthesis array at IUB CORE, imaged with the open-source TART stack and CASA.
+    compact: false
+  - title: CASSA — Observatory Control System
+    detail: Web-controlled multi-observatory system for transient follow-up — ALeRCE ingest, visibility filtering, approval gate, INDI imaging with plate-solving, autofocus, and guiding.
+    url: https://github.com/shahal-dev
+    compact: false
+  - title: Telescope Controller
+    detail: Browser-based dashboard for operating telescopes and managing observation plans across observatory sites.
+    url: https://telescope-controller.vercel.app
+    compact: false
+  - title: Bibaho-Bondhon
+    detail: Blockchain-based marriage registration platform on Solana with e-signatures and an immutable record ledger.
+    url: https://bibaho-bondhon.vercel.app/
+    compact: false
+  - title: ICCCAD ERP
+    detail: Enterprise resource planning system covering projects, tasks, milestones, budgets, attendance, and reporting with role-based access.
+    url: https://github.com/shahal-dev/ICCCAD_ERP
+    compact: false
+  - title: WiFi Intrusion Detection System
+    detail: PyTorch framework classifying 14 WiFi traffic classes from the AWID3 dataset with neural and tree-based models.
+    url: https://github.com/shahal-dev/wifi-ids
+    compact: false
+
+outreach:
+  - title: Astrophotography & science outreach — দূরবিন - Durbin
+    detail: Image processing, public observing programmes, and event coordination since 2023.
+    compact: false
+  - title: Project Quasar — astrophotography on YouTube
+    detail: Bangla-language videos on starting astrophotography on a budget, gear, and image processing.
+    compact: false
+
+languages:
+  - English
+  - Bangla

@@ -1,0 +1,10 @@
+title: "CASSA — Observatory Control System"
+description: "A web-controlled, multi-observatory system for automated transient follow-up: candidates arrive from the ALeRCE broker, are filtered by visibility, pass a supervisor approval gate, then get imaged on real INDI telescopes with plate-solving, autofocus, and guiding."
+image: /photos/NGC-2264/medium.webp
+url: "https://github.com/shahal-dev"
+tags:
+  - "INDI"
+  - "Telescope Control"
+  - "TypeScript"
+  - "Astronomy"
+date: "2026"

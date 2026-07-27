@@ -1,0 +1,9 @@
+title: "WiFi Intrusion Detection System"
+description: "A PyTorch deep-learning framework that detects WiFi network attacks, classifying 14 traffic classes from the AWID3 dataset with neural and tree-based models in a production-ready training pipeline."
+url: "https://github.com/shahal-dev/wifi-ids"
+tags:
+  - "PyTorch"
+  - "Security"
+  - "XGBoost"
+  - "Python"
+date: "2025"

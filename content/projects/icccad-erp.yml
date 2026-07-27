@@ -1,0 +1,9 @@
+title: "ICCCAD ERP"
+description: "An enterprise resource planning system for ICCCAD covering projects, tasks, milestones, budgets, attendance, and reporting — with role-based access for admins, project officers, and employees. Built during my CAP-RES research internship."
+url: "https://github.com/shahal-dev/ICCCAD_ERP"
+tags:
+  - "TypeScript"
+  - "PostgreSQL"
+  - "ERP"
+  - "Full-stack"
+date: "2025"

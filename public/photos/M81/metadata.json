@@ -1,0 +1,32 @@
+{
+  "object": "M81",
+  "title": "M81",
+  "slug": "M81",
+  "source": "img-15.jpg",
+  "processedAt": "2026-07-26T21:05:24.356Z",
+  "original": {
+    "width": 1790,
+    "height": 2171,
+    "format": "jpeg"
+  },
+  "versions": {
+    "thumb": {
+      "src": "/photos/M81/thumb.webp",
+      "width": 400,
+      "height": 485,
+      "bytes": 9912
+    },
+    "medium": {
+      "src": "/photos/M81/medium.webp",
+      "width": 1600,
+      "height": 1941,
+      "bytes": 289516
+    },
+    "full": {
+      "src": "/photos/M81/full.jpg",
+      "width": 1790,
+      "height": 2171,
+      "bytes": 837327
+    }
+  }
+}

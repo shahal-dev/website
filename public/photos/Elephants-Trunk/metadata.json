@@ -1,0 +1,32 @@
+{
+  "object": "Elephants-Trunk",
+  "title": "Elephants-Trunk",
+  "slug": "Elephants-Trunk",
+  "source": "img-07.png",
+  "processedAt": "2026-07-26T21:05:01.679Z",
+  "original": {
+    "width": 2560,
+    "height": 1920,
+    "format": "png"
+  },
+  "versions": {
+    "thumb": {
+      "src": "/photos/Elephants-Trunk/thumb.webp",
+      "width": 400,
+      "height": 300,
+      "bytes": 29814
+    },
+    "medium": {
+      "src": "/photos/Elephants-Trunk/medium.webp",
+      "width": 1600,
+      "height": 1200,
+      "bytes": 173750
+    },
+    "full": {
+      "src": "/photos/Elephants-Trunk/full.jpg",
+      "width": 2560,
+      "height": 1920,
+      "bytes": 656167
+    }
+  }
+}
