@@ -1,6 +1,5 @@
 title: "Galaxy Cluster X-ray Temperature Mapping"
 description: "A Chandra X-ray data-processing pipeline producing spatially-resolved temperature, pressure, and density maps of galaxy clusters — built to hunt for radio mini-haloes in the intracluster medium."
-image: /photos/Interacting-Spirals/medium.webp
 url: "https://github.com/shahal-dev/temp_mimic"
 tags:
   - "X-ray Astronomy"

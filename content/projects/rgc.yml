@@ -1,6 +1,5 @@
 title: "RGC — Radio Galaxy Classifier"
 description: "A semi-supervised deep-learning pipeline that classifies the morphology of bent radio AGNs — Wide-Angle Tail and Narrow-Angle Tail sources — from large-scale radio survey imagery. This is the core of my undergraduate thesis at CASSA, and the basis of the RGC paper."
-image: /photos/Elephants-Trunk/medium.webp
 url: "https://github.com/shahal-dev/RGC"
 tags:
   - "Deep Learning"

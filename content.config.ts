@@ -85,7 +85,7 @@ export default defineContentConfig({
       schema: z.object({
         minRead: z.number(),
         date: z.date(),
-        image: z.string().nonempty().editor({ input: 'media' }),
+        image: z.string().optional().editor({ input: 'media' }),
         author: createAuthorSchema()
       })
     }),
@@ -175,49 +175,6 @@ export default defineContentConfig({
           compact: z.boolean()
         })),
         languages: z.array(z.string())
-      })
-    }),
-    galleryIndex: defineCollection({
-      type: 'page',
-      source: 'gallery.yml',
-      schema: z.object({})
-    }),
-    gallery: defineCollection({
-      type: 'page',
-      source: 'gallery/*.md',
-      schema: z.object({
-        object: z.string().nonempty(),
-        tag: z.string().optional(),
-        // Folder produced by `pnpm photo` — holds thumb.webp / medium.webp / full.jpg.
-        folder: z.string().nonempty(),
-        alt: z.string().nonempty(),
-        featured: z.boolean().default(false),
-        date: z.string().optional(),
-        location: z.string().optional(),
-        // Extra frames of the same object, shown in the carousel.
-        frames: z.array(z.object({
-          folder: z.string().optional(),
-          src: z.string().optional(),
-          caption: z.string().optional()
-        })).optional(),
-        // Professional reference (Hubble, JWST, a survey) for the comparison slider.
-        reference: z.object({
-          src: z.string().nonempty(),
-          label: z.string().optional(),
-          credit: z.string().nonempty(),
-          url: z.string().optional()
-        }).optional(),
-        gear: z.object({
-          telescope: z.string().optional(),
-          camera: z.string().optional(),
-          mount: z.string().optional(),
-          filters: z.string().optional()
-        }).optional(),
-        acquisition: z.object({
-          exposures: z.string().optional(),
-          integration: z.string().optional(),
-          sky: z.string().optional()
-        }).optional()
       })
     }),
     about: defineCollection({

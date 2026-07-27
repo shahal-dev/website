@@ -14,8 +14,7 @@ useSeoMeta({
   title: page.value?.seo.title || page.value?.title,
   ogTitle: page.value?.seo.title || page.value?.title,
   description: page.value?.seo.description || page.value?.description,
-  ogDescription: page.value?.seo.description || page.value?.description,
-  ogImage: '/photos/Milky-Way-Core/medium.webp'
+  ogDescription: page.value?.seo.description || page.value?.description
 })
 </script>
 

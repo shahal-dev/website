@@ -3,7 +3,7 @@ import { queryCollection } from '@nuxt/content/nitro'
 /**
  * One endpoint for every content collection.
  *
- *   /api/content/gallery            → all published photos
+ *   /api/content/gallery            → all published photos (database only)
  *   /api/content/gallery/<slug>     → one photo
  *   /api/content/projects
  *   /api/content/posts[/<slug>]
@@ -37,35 +37,6 @@ function mapGallery(row: Dict) {
     location: row.location,
     featured: row.featured,
     body: row.body
-  }
-}
-
-function mapGalleryFile(doc: Dict) {
-  const folder = String(doc.folder || '')
-  return {
-    slug: String(doc.path || '').split('/').pop(),
-    path: doc.path,
-    title: doc.title,
-    description: doc.description,
-    object: doc.object,
-    tag: doc.tag,
-    alt: doc.alt,
-    thumb: `${folder}/thumb.webp`,
-    medium: `${folder}/medium.webp`,
-    full: `${folder}/full.jpg`,
-    frames: ((doc.frames as Dict[]) || []).map(frame => ({
-      medium: frame.folder ? `${frame.folder}/medium.webp` : frame.src,
-      full: frame.folder ? `${frame.folder}/full.jpg` : frame.src,
-      caption: frame.caption
-    })),
-    reference: doc.reference || null,
-    gear: doc.gear || {},
-    acquisition: doc.acquisition || {},
-    date: doc.date,
-    location: doc.location,
-    featured: doc.featured,
-    // File-backed entries keep their parsed AST so <ContentRenderer> can use it.
-    ast: doc.body
   }
 }
 
@@ -179,13 +150,10 @@ export default defineCachedEventHandler(async (event) => {
   }
 
   // ---- File fallback ------------------------------------------------------
+  // The gallery is database-only: with no Supabase there is simply nothing to
+  // show, rather than a stale copy in the repository.
   if (collection === 'gallery') {
-    if (slug) {
-      const doc = await queryCollection(event, 'gallery').path(`/gallery/${slug}`).first()
-      return { source: 'files', item: doc ? mapGalleryFile(doc as Dict) : null }
-    }
-    const docs = await queryCollection(event, 'gallery').all()
-    return { source: 'files', items: docs.map(doc => mapGalleryFile(doc as Dict)) }
+    return slug ? { source: 'supabase', item: null } : { source: 'supabase', items: [] }
   }
 
   if (collection === 'projects') {
@@ -231,7 +199,6 @@ export default defineCachedEventHandler(async (event) => {
   if (collection === 'pages' && slug) {
     const map: Record<string, string> = {
       about: 'about',
-      gallery: 'galleryIndex',
       index: 'index'
     }
     const name = map[slug]

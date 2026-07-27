@@ -10,7 +10,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "nuxt typecheck",
-    "photo": "node scripts/process-photo.mjs",
     "seed": "node --env-file-if-exists=.env scripts/seed-supabase.mjs"
   },
   "dependencies": {
@@ -30,9 +29,6 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
     "eslint": "^10.7.0",
-    "exif-reader": "^2.0.3",
-    "pg": "^8.22.0",
-    "sharp": "^0.35.3",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.7",
     "yaml": "^2.9.0"

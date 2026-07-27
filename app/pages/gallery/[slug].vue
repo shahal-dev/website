@@ -18,10 +18,8 @@ interface GalleryDetail {
   acquisition?: Record<string, string>
   date?: string
   location?: string
-  /** Markdown from Supabase … */
+  /** Markdown, written in the admin. */
   body?: string
-  /** … or the parsed AST from a content file. */
-  ast?: unknown
 }
 
 const route = useRoute()
@@ -145,15 +143,9 @@ useSeoMeta({
         </div>
       </div>
 
-      <!-- Database entries carry markdown; file entries carry a parsed AST. -->
       <MDC
         v-if="photo.body"
         :value="photo.body"
-        class="prose prose-sm dark:prose-invert max-w-none"
-      />
-      <ContentRenderer
-        v-else-if="photo.ast"
-        :value="{ body: photo.ast }"
         class="prose prose-sm dark:prose-invert max-w-none"
       />
 

@@ -2,7 +2,6 @@
 title: Teaching a Neural Network to Recognise Bent Radio Galaxies
 description: How the Radio Galaxy Classifier (RGC) uses semi-supervised learning and rotation-equivariant CNNs to sort Wide-Angle Tail from Narrow-Angle Tail radio AGNs.
 date: 2025-11-10
-image: /photos/Elephants-Trunk/medium.webp
 minRead: 6
 author:
   name: MD Shahadat Hossain Shahal

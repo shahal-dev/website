@@ -1,62 +1,41 @@
-# Nuxt Portfolio Template
+# shahadathshahal
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Personal site of **MD Shahadat Hossain Shahal** — research assistant at the
+Center for Astronomy, Space Science and Astrophysics (CASSA), machine learning
+for radio astronomy, and astrophotography.
 
-Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.com).
+Built with Nuxt 4, Nuxt UI and Nuxt Content, with Supabase behind an admin area
+for editing everything without touching the code.
 
-- [Live demo](https://portfolio-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
-
-<a href="https://portfolio-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-    <img alt="Nuxt Portfolio Template" src="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-  </picture>
-</a>
-
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- -t ui/portfolio
-```
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=portfolio&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fportfolio&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fportfolio-dark.png&demo-url=https%3A%2F%2Fportfolio-template.nuxt.dev%2F&demo-title=Nuxt%20Portfolio%20Template&demo-description=A%20sleek%20portfolio%20template%20to%20showcase%20your%20work%2C%20skills%20and%20blog%20powered%20by%20Nuxt%20Content.)
-
-## Setup
-
-Make sure to install the dependencies:
+## Running it
 
 ```bash
 pnpm install
+pnpm dev          # http://localhost:3000
+pnpm build        # production build
+pnpm lint         # eslint
 ```
 
-## Development Server
+## What's where
 
-Start the development server on `http://localhost:3000`:
+| Path | What it is |
+| --- | --- |
+| `content/` | Markdown/YAML content — also the fallback when Supabase is unavailable |
+| `content/cv.yml` | The CV that feeds the About page and both PDF downloads |
+| `app/pages/` | Public pages, plus `admin/` (private) and `cv/` (print views) |
+| `server/api/content/` | Reads Supabase, falls back to `content/` |
+| `supabase/schema.sql` | Tables, row level security, storage bucket |
+| `scripts/seed-supabase.mjs` | Copies `content/` into Supabase (gallery excluded — it's database-only) |
 
-```bash
-pnpm dev
-```
+## Adding an astrophoto
 
-## Production
+The gallery lives entirely in Supabase. Go to `/admin/gallery` → **New photo**,
+upload one image, and the browser generates the three versions — 400 px
+thumbnail, 1600 px display, full resolution — plus `metadata.json`, and uploads
+them straight to Supabase Storage. Extra carousel frames and a professional
+reference frame for the comparison slider work the same way.
 
-Build the application for production:
+## Admin and deployment
 
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Renovate integration
-
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+See [`SETUP.md`](SETUP.md) — database schema, admin account, environment
+variables, seeding, and the Vercel deploy.

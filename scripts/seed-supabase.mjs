@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
- * One-time migration: push everything currently in content/ and public/photos/
- * into Supabase (tables + storage bucket).
+ * One-time migration: push the content in content/ into Supabase.
+ *
+ * The gallery is not included — photos live only in the database and are
+ * uploaded through the admin.
  *
  *   SUPABASE_SERVICE_ROLE_KEY=… pnpm seed
  *
@@ -66,80 +68,6 @@ async function uploadFile(localPath, storagePath) {
   return publicUrl
 }
 
-/** Upload every file under public/photos/<folder> and return the version URLs. */
-async function uploadPhotoFolder(folder) {
-  const localDir = path.join(root, 'public', folder.replace(/^\//, ''))
-  const relative = folder.replace(/^\/photos\//, '')
-  const urls = {}
-
-  for (const name of ['thumb.webp', 'medium.webp', 'full.jpg', 'metadata.json']) {
-    const localPath = path.join(localDir, name)
-    try {
-      await stat(localPath)
-    } catch {
-      continue
-    }
-    urls[name] = await uploadFile(localPath, `${relative}/${name}`)
-  }
-
-  return urls
-}
-
-// ---------------------------------------------------------------------------
-//  Gallery
-// ---------------------------------------------------------------------------
-async function seedGallery() {
-  const dir = path.join(root, 'content/gallery')
-  const files = (await readdir(dir)).filter(name => name.endsWith('.md'))
-  const rows = []
-
-  for (const [index, file] of files.entries()) {
-    const { data, body } = parseMarkdown(await readFile(path.join(dir, file), 'utf8'))
-    if (!data.folder) continue
-
-    const main = await uploadPhotoFolder(data.folder)
-
-    const frames = []
-    for (const frame of data.frames || []) {
-      if (!frame.folder) continue
-      const uploaded = await uploadPhotoFolder(frame.folder)
-      frames.push({
-        medium: uploaded['medium.webp'],
-        full: uploaded['full.jpg'],
-        caption: frame.caption || ''
-      })
-    }
-
-    rows.push({
-      slug: file.replace(/\.md$/, ''),
-      title: data.title,
-      description: data.description || '',
-      object: data.object || data.title,
-      tag: data.tag || null,
-      alt: data.alt || data.title,
-      body,
-      thumb_url: main['thumb.webp'],
-      medium_url: main['medium.webp'],
-      full_url: main['full.jpg'],
-      frames,
-      reference: data.reference || null,
-      gear: data.gear || {},
-      acquisition: data.acquisition || {},
-      captured_on: data.date || null,
-      location: data.location || null,
-      featured: Boolean(data.featured),
-      published: true,
-      sort_order: index
-    })
-  }
-
-  log(`gallery_photos: ${rows.length} rows`)
-  if (!dryRun && rows.length) {
-    const { error } = await supabase.from('gallery_photos').upsert(rows, { onConflict: 'slug' })
-    if (error) throw error
-  }
-}
-
 // ---------------------------------------------------------------------------
 //  Projects
 // ---------------------------------------------------------------------------
@@ -153,11 +81,7 @@ async function seedProjects() {
     let imageUrl = data.image || null
 
     // Local files move into storage; remote URLs are left alone.
-    if (imageUrl?.startsWith('/photos/')) {
-      const folder = imageUrl.split('/').slice(0, 3).join('/')
-      const uploaded = await uploadPhotoFolder(folder)
-      imageUrl = uploaded['medium.webp'] || null
-    } else if (imageUrl?.startsWith('/')) {
+    if (imageUrl?.startsWith('/')) {
       const localPath = path.join(root, 'public', imageUrl.replace(/^\//, ''))
       try {
         await stat(localPath)
@@ -199,11 +123,7 @@ async function seedPosts() {
     const { data, body } = parseMarkdown(await readFile(path.join(dir, file), 'utf8'))
     let imageUrl = data.image || null
 
-    if (imageUrl?.startsWith('/photos/')) {
-      const folder = imageUrl.split('/').slice(0, 3).join('/')
-      const uploaded = await uploadPhotoFolder(folder)
-      imageUrl = uploaded['medium.webp'] || null
-    } else if (imageUrl?.startsWith('/')) {
+    if (imageUrl?.startsWith('/')) {
       const localPath = path.join(root, 'public', imageUrl.replace(/^\//, ''))
       try {
         await stat(localPath)
@@ -261,14 +181,12 @@ async function seedPublications() {
 // ---------------------------------------------------------------------------
 async function seedPages() {
   const about = parseYaml(await readFile(path.join(root, 'content/about.yml'), 'utf8'))
-  const gallery = parseYaml(await readFile(path.join(root, 'content/gallery.yml'), 'utf8'))
   const index = parseYaml(await readFile(path.join(root, 'content/index.yml'), 'utf8'))
   const projects = parseYaml(await readFile(path.join(root, 'content/projects.yml'), 'utf8'))
   const publications = parseYaml(await readFile(path.join(root, 'content/publications.yml'), 'utf8'))
 
   const rows = [
     { key: 'about', title: about.title, description: about.description, body: about.content || '', data: {} },
-    { key: 'gallery', title: gallery.title, description: gallery.description, body: '', data: {} },
     {
       key: 'home',
       title: index.title,
@@ -300,7 +218,6 @@ async function seedCv() {
 // ---------------------------------------------------------------------------
 try {
   log(dryRun ? '— dry run —' : `Seeding ${url}`)
-  await seedGallery()
   await seedProjects()
   await seedPosts()
   await seedPublications()

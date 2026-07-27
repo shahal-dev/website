@@ -2,7 +2,6 @@
 title: Mapping the Hot Gas in Galaxy Clusters
 description: Turning raw Chandra X-ray observations into spatially-resolved temperature, pressure, and density maps — and why those maps are how you find a radio mini-halo.
 date: 2026-03-02
-image: /photos/Interacting-Spirals/medium.webp
 minRead: 5
 author:
   name: MD Shahadat Hossain Shahal

@@ -10,13 +10,10 @@ interface GalleryItem {
   medium: string
 }
 
-const { data: filePage } = await useAsyncData('gallery-page', () => {
-  return queryCollection('galleryIndex').first()
-})
-
+// Heading and blurb come from the `pages` table (admin → Pages → Gallery intro).
 const copy = await usePageCopy('gallery', {
-  title: filePage.value?.title,
-  description: filePage.value?.description
+  title: 'Chasing Photons',
+  description: 'Nights under the sky over Bangladesh — deep-sky objects, the Milky Way, and the Moon. Every frame here was shot, stacked and processed by me.'
 })
 
 const photos = await useContentItems<GalleryItem>('gallery-photos', 'gallery')
@@ -55,36 +52,48 @@ defineOgImage('Portfolio', { title: copy.value.title, description: copy.value.de
         container: 'pt-0!'
       }"
     >
-      <GallerySlider
-        v-if="slides.length"
-        :photos="slides"
-      />
+      <template v-if="photos.length">
+        <GallerySlider :photos="slides" />
 
-      <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <NuxtLink
-          v-for="photo in photos"
-          :key="photo.path"
-          :to="photo.path"
-          class="group relative block overflow-hidden rounded-lg"
-        >
-          <img
-            :src="photo.thumb"
-            :alt="photo.alt"
-            class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-56"
-            loading="lazy"
+        <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <NuxtLink
+            v-for="photo in photos"
+            :key="photo.path"
+            :to="photo.path"
+            class="group relative block overflow-hidden rounded-lg"
           >
-          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral-950/85 to-transparent p-3">
-            <p class="text-sm font-medium text-white">
-              {{ photo.title }}
-            </p>
-            <p
-              v-if="photo.tag"
-              class="text-xs text-white/70"
+            <img
+              :src="photo.thumb"
+              :alt="photo.alt"
+              class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-56"
+              loading="lazy"
             >
-              {{ photo.tag }}
-            </p>
-          </div>
-        </NuxtLink>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral-950/85 to-transparent p-3">
+              <p class="text-sm font-medium text-white">
+                {{ photo.title }}
+              </p>
+              <p
+                v-if="photo.tag"
+                class="text-xs text-white/70"
+              >
+                {{ photo.tag }}
+              </p>
+            </div>
+          </NuxtLink>
+        </div>
+      </template>
+
+      <div
+        v-else
+        class="rounded-lg border border-dashed border-default px-6 py-16 text-center"
+      >
+        <UIcon
+          name="i-lucide-telescope"
+          class="size-8 text-dimmed"
+        />
+        <p class="mt-3 text-sm text-muted">
+          No photos published yet.
+        </p>
       </div>
     </UPageSection>
   </UPage>

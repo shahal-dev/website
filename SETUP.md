@@ -56,9 +56,11 @@ browser.
 pnpm seed            # add --dry-run first to see what it would do
 ```
 
-This uploads `public/photos/**` to the `photos` storage bucket and copies every
-photo, project, post, publication and page into Supabase. Re-running it upserts
-by slug, so it won't create duplicates.
+This copies every project, post, publication, page and the CV into Supabase.
+Re-running it upserts by slug, so it won't create duplicates.
+
+The gallery is deliberately not seeded — photos live only in the database, added
+through the admin.
 
 After seeding, the site reads from Supabase and the files in `content/` are just
 a fallback for when the database is unreachable.
@@ -69,9 +71,6 @@ Import the repo — Vercel detects Nuxt and needs no extra configuration. Add
 `NUXT_PUBLIC_SUPABASE_URL` and `NUXT_PUBLIC_SUPABASE_ANON_KEY` under
 **Settings → Environment Variables** (Production *and* Preview), then redeploy.
 
-`render.yaml` is still in the repo if you'd rather host on Render; it works
-either way.
-
 ---
 
 ## Using the admin
@@ -79,9 +78,10 @@ either way.
 Go to `/admin` (it isn't linked from anywhere and is excluded from search
 engines). Sign in with the account from step 2.
 
-- **Gallery** — upload one image and the three versions (400 px thumbnail,
-  1600 px display, full resolution) plus `metadata.json` are generated in your
-  browser and uploaded straight to Supabase Storage. Add extra frames for the
+- **Gallery** — the whole gallery lives here; there is no file-based copy.
+  Upload one image and the three versions (400 px thumbnail, 1600 px display,
+  full resolution) plus `metadata.json` are generated in your browser and
+  uploaded straight to Supabase Storage. Add extra frames for the
   carousel, a professional reference frame for the comparison slider, gear and
   acquisition details, and the story in Markdown.
 - **Projects / Blog / Publications** — the same pattern: list, edit, publish
@@ -93,9 +93,10 @@ engines). Sign in with the account from step 2.
 Everything saves to the database and appears on the site within a minute (the
 content API caches for 60 seconds).
 
-If Supabase is unreachable — or a table doesn't exist yet — the content API
-logs a warning and serves the files in `content/` instead, so the public site
-never goes down with the database.
+If Supabase is unreachable — or a table doesn't exist yet — the content API logs
+a warning and serves the files in `content/` instead, so the public site never
+goes down with the database. The gallery is the exception: it has no file copy,
+so it simply shows an empty state until the database answers.
 
 ### Security summary
 
