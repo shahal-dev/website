@@ -16,6 +16,17 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  app: {
+    head: {
+      meta: [
+        // Proves ownership to Google Search Console. The previous site's
+        // token went away with its deployment, leaving the property verified
+        // only by Google's cached grant — which is revoked on re-check.
+        { name: 'google-site-verification', content: 'zDi2OFFJW4nJeSjniuk0AXS-_fy9UbNXFo4K4zQHGAI' }
+      ]
+    }
+  },
+
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://knowshahal.vercel.app',
     name: 'MD Shahadat Hossain Shahal'
