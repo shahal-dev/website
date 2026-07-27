@@ -26,7 +26,8 @@ useSeoMeta({
   title,
   description,
   ogDescription: description,
-  ogTitle: title
+  ogTitle: title,
+  ogType: 'article'
 })
 
 if (page.value.image) {
@@ -38,6 +39,20 @@ if (page.value.image) {
     headline: 'Blog'
   })
 }
+
+const url = useSiteUrl()
+
+useJsonLd(() => ({
+  '@type': 'BlogPosting',
+  'headline': page.value?.title,
+  'description': page.value?.description,
+  'url': url(route.path),
+  'mainEntityOfPage': url(route.path),
+  ...(page.value?.image ? { image: url(String(page.value.image)) } : {}),
+  ...(page.value?.date ? { datePublished: String(page.value.date).slice(0, 10) } : {}),
+  'author': { '@type': 'Person', 'name': 'MD Shahadat Hossain Shahal', 'url': url('/about') },
+  'publisher': { '@type': 'Person', 'name': 'MD Shahadat Hossain Shahal' }
+}))
 
 const articleLink = computed(() => `${window?.location}`)
 

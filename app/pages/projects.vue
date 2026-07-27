@@ -35,6 +35,25 @@ useSeoMeta({
 })
 
 defineOgImage('Portfolio', { title, description })
+
+const url = useSiteUrl()
+
+useJsonLd(() => ({
+  '@type': 'CollectionPage',
+  'name': title,
+  'description': description,
+  'url': url('/projects'),
+  'mainEntity': {
+    '@type': 'ItemList',
+    'itemListElement': projects.value.map((project, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': project.title,
+      'description': project.description,
+      'url': project.url
+    }))
+  }
+}))
 </script>
 
 <template>

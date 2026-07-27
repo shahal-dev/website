@@ -16,6 +16,11 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://shahadathshahal.vercel.app',
+    name: 'MD Shahadat Hossain Shahal'
+  },
+
   content: {
     experimental: {
       sqliteConnector: 'native'
@@ -25,7 +30,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       supabaseUrl: '',
-      supabaseAnonKey: ''
+      supabaseAnonKey: '',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://shahadathshahal.vercel.app'
     }
   },
 

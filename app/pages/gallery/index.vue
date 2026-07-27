@@ -35,6 +35,21 @@ useSeoMeta({
 })
 
 defineOgImage('Portfolio', { title: copy.value.title, description: copy.value.description })
+
+const url = useSiteUrl()
+
+useJsonLd(() => ({
+  '@type': 'CollectionPage',
+  'name': copy.value.title,
+  'description': copy.value.description,
+  'url': url('/gallery'),
+  'hasPart': photos.value.map(photo => ({
+    '@type': 'ImageObject',
+    'name': photo.title,
+    'url': url(photo.path),
+    'thumbnailUrl': photo.thumb
+  }))
+}))
 </script>
 
 <template>

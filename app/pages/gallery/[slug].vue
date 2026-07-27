@@ -61,12 +61,37 @@ const facts = computed(() => {
   ].filter(fact => fact.value)
 })
 
+const url = useSiteUrl()
+
+useJsonLd(() => ({
+  '@type': 'ImageObject',
+  'name': photo.value?.title,
+  'description': photo.value?.description,
+  'contentUrl': photo.value?.full,
+  'thumbnailUrl': photo.value?.thumb,
+  'url': url(`/gallery/${slug.value}`),
+  'creator': { '@type': 'Person', 'name': 'MD Shahadat Hossain Shahal' },
+  'copyrightHolder': { '@type': 'Person', 'name': 'MD Shahadat Hossain Shahal' },
+  ...(photo.value?.date ? { dateCreated: photo.value.date } : {}),
+  ...(photo.value?.location ? { contentLocation: { '@type': 'Place', 'name': photo.value.location } } : {}),
+  ...(photo.value?.gear?.camera ? { exifData: photo.value.gear.camera } : {})
+}))
+
+useJsonLd(() => ({
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'Gallery', 'item': url('/gallery') },
+    { '@type': 'ListItem', 'position': 2, 'name': photo.value?.title, 'item': url(`/gallery/${slug.value}`) }
+  ]
+}))
+
 useSeoMeta({
   title: photo.value?.title,
   ogTitle: photo.value?.title,
   description: photo.value?.description,
   ogDescription: photo.value?.description,
-  ogImage: photo.value?.medium
+  ogImage: photo.value?.medium,
+  ogType: 'article'
 })
 </script>
 

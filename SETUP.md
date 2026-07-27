@@ -40,6 +40,7 @@ From **Project Settings → API**:
 
 | Variable | Where | Value |
 | --- | --- | --- |
+| `NUXT_PUBLIC_SITE_URL` | Vercel + `.env` | Your live domain, e.g. `https://shahadathshahal.vercel.app` — used for canonical URLs, the sitemap and OG images |
 | `NUXT_PUBLIC_SUPABASE_URL` | Vercel + `.env` | Project URL |
 | `NUXT_PUBLIC_SUPABASE_ANON_KEY` | Vercel + `.env` | `anon` / publishable key |
 | `SUPABASE_SERVICE_ROLE_KEY` | **local `.env` only** | `service_role` key |
@@ -115,6 +116,31 @@ so it simply shows an empty state until the database answers.
   Supabase's own auth rate limiting.
 - Uploads go browser → Supabase directly, so no image ever passes through the
   hosting platform's request limits.
+
+## SEO
+
+Carried over from the old site and wired to the live content:
+
+- `/sitemap.xml` — static pages plus every published gallery photo and blog post,
+  generated per request so new entries are listed without a redeploy.
+- `/robots.txt` — points at the sitemap, keeps `/admin`, `/cv/` and `/api/` out.
+- `/rss.xml` — blog feed, linked from every page.
+- Canonical URLs, Open Graph and Twitter card tags on every page.
+- `robots: index, follow, max-image-preview:large` so Google can use large image
+  previews.
+- Google Search Console verification, both the meta tag and the
+  `googleda9a048415d588fd.html` file from the previous site — so the existing
+  property stays verified.
+- schema.org JSON-LD: `WebSite` sitewide, `Person` on About (job title, socials,
+  CASSA affiliation), `WebPage` on the homepage, `ImageObject` +
+  `BreadcrumbList` on each photo, `BlogPosting` on posts, `CollectionPage` +
+  `ItemList` on gallery and projects.
+- OG images are generated per page at request time — the card now carries your
+  name instead of the template's branding.
+
+**Set `NUXT_PUBLIC_SITE_URL` in Vercel** — everything above falls back to
+`shahadathshahal.vercel.app` until you do, which would make canonicals point at
+the wrong domain if you use a custom one.
 
 ### If you ever need to revoke access
 

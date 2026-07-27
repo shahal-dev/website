@@ -33,6 +33,30 @@ useSeoMeta({
 })
 
 defineOgImage('Portfolio', { title, description })
+
+const url = useSiteUrl()
+const { footer } = useAppConfig()
+
+useJsonLd(() => ({
+  '@type': 'Person',
+  'name': 'MD Shahadat Hossain Shahal',
+  'jobTitle': cv.value?.role || 'Research Assistant — Radio Astronomy & Machine Learning',
+  'description': description,
+  'url': url('/about'),
+  'image': url('/portrait.jpg'),
+  'email': `mailto:${global.email}`,
+  'sameAs': (footer?.links || []).map(link => link.to).filter(Boolean),
+  'worksFor': {
+    '@type': 'Organization',
+    'name': 'Center for Astronomy, Space Science and Astrophysics (CASSA), Independent University, Bangladesh',
+    'url': 'https://www.iub.edu.bd/'
+  },
+  'alumniOf': {
+    '@type': 'CollegeOrUniversity',
+    'name': 'Independent University, Bangladesh'
+  },
+  'knowsAbout': ['Radio astronomy', 'Machine learning', 'Astrophotography', 'Deep learning', 'X-ray astronomy']
+}))
 </script>
 
 <template>

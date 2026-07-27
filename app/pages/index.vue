@@ -10,6 +10,20 @@ if (!page.value) {
   })
 }
 
+const url = useSiteUrl()
+
+useJsonLd(() => ({
+  '@type': 'WebPage',
+  'name': page.value?.title,
+  'description': page.value?.description,
+  'url': url('/'),
+  'publisher': {
+    '@type': 'Person',
+    'name': 'MD Shahadat Hossain Shahal',
+    'image': { '@type': 'ImageObject', 'url': url('/avatar.jpg') }
+  }
+}))
+
 useSeoMeta({
   title: page.value?.seo.title || page.value?.title,
   ogTitle: page.value?.seo.title || page.value?.title,
