@@ -35,17 +35,17 @@ export default defineNuxtConfig({
     '/api/content/**': { cors: false },
 
     // Everything below reads from Supabase, so it must not be frozen at build
-    // time. `isr` renders on demand and caches the result for a minute — new
-    // and edited entries appear without a redeploy.
-    '/': { isr: 60 },
-    '/about': { isr: 60 },
-    '/gallery': { isr: 60 },
-    '/gallery/**': { isr: 60 },
-    '/projects': { isr: 60 },
-    '/blog': { isr: 60 },
-    '/blog/**': { isr: 60 },
-    '/publications': { isr: 60 },
-    '/cv/**': { isr: 60 }
+    // time. `isr` renders on demand and caches the result briefly — new and
+    // edited entries appear without a redeploy.
+    '/': { isr: 30 },
+    '/about': { isr: 30 },
+    '/gallery': { isr: 30 },
+    '/gallery/**': { isr: 30 },
+    '/projects': { isr: 30 },
+    '/blog': { isr: 30 },
+    '/blog/**': { isr: 30 },
+    '/publications': { isr: 30 },
+    '/cv/**': { isr: 30 }
   },
 
   compatibilityDate: '2026-06-30',

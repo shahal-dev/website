@@ -214,8 +214,9 @@ export default defineCachedEventHandler(async (event) => {
   throw createError({ statusCode: 404, statusMessage: 'Unknown collection' })
 }, {
   name: 'site-content',
-  // Short cache: admin edits show up within a minute without hammering the DB.
-  maxAge: 60,
+  // Brief cache so a burst of requests doesn't hammer the database, short
+  // enough that admin edits are visible almost immediately.
+  maxAge: 10,
   swr: true,
   getKey: event => `content:${getRouterParam(event, 'path') || ''}`
 })

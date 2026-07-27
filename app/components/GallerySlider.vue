@@ -46,7 +46,7 @@ function prev() {
       :class="index === 0 ? 'z-0' : 'z-10 rounded-lg shadow-xl shadow-neutral-950/40 cursor-pointer'"
       :style="index === 0
         ? { left: '0px', top: '0px', width: '100%', height: '100%' }
-        : { left: `calc(50% + ${(index - 1) * 1.15} * var(--card-w))`, top: `calc(50% - var(--card-h) / 2)`, width: 'var(--card-w)', height: 'var(--card-h)' }"
+        : { left: `calc(100% - 1.65 * var(--card-w) + ${(index - 1) * 1.15} * var(--card-w))`, top: `calc(50% - var(--card-h) / 2)`, width: 'var(--card-w)', height: 'var(--card-h)' }"
       :aria-hidden="index !== 0"
       :aria-label="index === 0 ? undefined : `Show ${photo.title}`"
       :tabindex="index === 0 ? undefined : -1"
@@ -65,7 +65,7 @@ function prev() {
 
       <div
         v-if="index === 0"
-        class="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center gap-2 p-6 sm:p-10 text-white"
+        class="absolute inset-y-0 left-0 flex max-w-[62%] flex-col justify-center gap-2 p-6 text-white sm:max-w-md sm:p-10"
       >
         <p class="text-xs uppercase tracking-[0.2em] text-white/70">
           {{ photo.tag }}<template v-if="photo.date">
@@ -121,8 +121,8 @@ function prev() {
 
 <style scoped>
 .gallery-slider {
-  --card-w: 6.5rem;
-  --card-h: 9.5rem;
+  --card-w: 5.5rem;
+  --card-h: 8rem;
   height: 20rem;
 }
 
