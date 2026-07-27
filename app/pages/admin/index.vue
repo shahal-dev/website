@@ -69,6 +69,13 @@ onMounted(async () => {
         variant="subtle"
       />
       <UPageCard
+        to="/admin/import"
+        icon="i-lucide-download"
+        title="Import existing content"
+        description="Pull the projects, posts, publications and CV out of the repository so they're editable here."
+        variant="subtle"
+      />
+      <UPageCard
         to="/admin/gallery/new"
         icon="i-lucide-upload"
         title="Upload a photo"

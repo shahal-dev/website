@@ -99,11 +99,6 @@ const formatDate = (dateString: string) => {
           <MDC
             v-if="typeof page.body === 'string'"
             :value="page.body"
-            class="prose prose-sm dark:prose-invert max-w-none"
-          />
-          <ContentRenderer
-            v-else-if="page.body"
-            :value="page"
           />
 
           <div class="flex items-center justify-end gap-2 text-sm text-muted">

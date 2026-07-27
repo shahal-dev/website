@@ -83,6 +83,10 @@ export default defineContentConfig({
       type: 'page',
       source: 'blog/*.md',
       schema: z.object({
+        // Keeps the markdown source alongside the parsed AST so posts can be
+        // rendered the same way whether they come from a file or the database,
+        // and so admin → Import can copy them into Supabase verbatim.
+        rawbody: z.string(),
         minRead: z.number(),
         date: z.date(),
         image: z.string().optional().editor({ input: 'media' }),

@@ -173,12 +173,16 @@ export default defineCachedEventHandler(async (event) => {
   }
 
   if (collection === 'posts') {
+    // `rawbody` is the markdown source — same shape the database rows use, so
+    // the blog renders identically from either place.
+    const stripFrontmatter = (raw: string) => raw.replace(/^---\n[\s\S]*?\n---\n?/, '').trim()
+    const toPost = (doc: Dict) => ({ ...doc, body: stripFrontmatter(String(doc.rawbody || '')) })
     if (slug) {
       const doc = await queryCollection(event, 'blog').path(`/blog/${slug}`).first()
-      return { source: 'files', item: doc }
+      return { source: 'files', item: doc ? toPost(doc as Dict) : null }
     }
     const docs = await queryCollection(event, 'blog').order('date', 'DESC').all()
-    return { source: 'files', items: docs }
+    return { source: 'files', items: docs.map(doc => toPost(doc as Dict)) }
   }
 
   if (collection === 'publications') {

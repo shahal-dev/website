@@ -52,14 +52,18 @@ browser.
 
 ## 4. Move the current content into the database (once)
 
+Easiest way: sign in and open **/admin/import**, then press *Import everything*.
+It copies the projects, blog posts, publications, page copy and CV that are
+still coming from the repository into Supabase, after which they're editable in
+the admin. No extra keys needed — it runs as you.
+
+There's also a command-line equivalent if you prefer:
+
 ```bash
 pnpm seed            # add --dry-run first to see what it would do
 ```
 
-This copies every project, post, publication, page and the CV into Supabase.
-Re-running it upserts by slug, so it won't create duplicates.
-
-The gallery is deliberately not seeded — photos live only in the database, added
+Either way the gallery is skipped — photos live only in the database, added
 through the admin.
 
 After seeding, the site reads from Supabase and the files in `content/` are just

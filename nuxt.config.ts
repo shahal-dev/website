@@ -32,17 +32,28 @@ export default defineNuxtConfig({
   routeRules: {
     // The admin app is private: never rendered ahead of time, never indexed.
     '/admin/**': { ssr: false, robots: false, index: false },
-    '/api/content/**': { cors: false }
+    '/api/content/**': { cors: false },
+
+    // Everything below reads from Supabase, so it must not be frozen at build
+    // time. `isr` renders on demand and caches the result for a minute — new
+    // and edited entries appear without a redeploy.
+    '/': { isr: 60 },
+    '/about': { isr: 60 },
+    '/gallery': { isr: 60 },
+    '/gallery/**': { isr: 60 },
+    '/projects': { isr: 60 },
+    '/blog': { isr: 60 },
+    '/blog/**': { isr: 60 },
+    '/publications': { isr: 60 },
+    '/cv/**': { isr: 60 }
   },
 
   compatibilityDate: '2026-06-30',
 
   nitro: {
     prerender: {
-      routes: [
-        '/'
-      ],
-      crawlLinks: true,
+      // Nothing is prerendered: every page depends on database content.
+      crawlLinks: false,
       ignore: ['/admin']
     }
   },
@@ -57,6 +68,7 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    zeroRuntime: true
+    // Pages are no longer prerendered, so OG images are generated on demand.
+    zeroRuntime: false
   }
 })

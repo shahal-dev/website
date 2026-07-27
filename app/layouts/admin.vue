@@ -12,7 +12,8 @@ const links = [
   { label: 'Blog', icon: 'i-lucide-file-text', to: '/admin/blog' },
   { label: 'Publications', icon: 'i-lucide-graduation-cap', to: '/admin/publications' },
   { label: 'CV', icon: 'i-lucide-file-user', to: '/admin/cv' },
-  { label: 'Pages', icon: 'i-lucide-file-pen-line', to: '/admin/pages' }
+  { label: 'Pages', icon: 'i-lucide-file-pen-line', to: '/admin/pages' },
+  { label: 'Import', icon: 'i-lucide-download', to: '/admin/import' }
 ]
 
 const isLogin = computed(() => route.path === '/admin/login')
