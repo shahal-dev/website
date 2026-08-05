@@ -8,6 +8,10 @@ interface GalleryItem {
   alt: string
   thumb: string
   medium: string
+  date?: string
+  location?: string
+  lat?: number | null
+  lng?: number | null
 }
 
 // Heading and blurb come from the `pages` table (admin → Pages → Gallery intro).
@@ -69,6 +73,13 @@ useJsonLd(() => ({
     >
       <template v-if="photos.length">
         <GallerySlider :photos="slides" />
+
+        <ClientOnly>
+          <PhotoMap
+            :photos="photos"
+            class="mt-12"
+          />
+        </ClientOnly>
 
         <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
           <NuxtLink

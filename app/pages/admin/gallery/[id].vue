@@ -26,6 +26,8 @@ interface PhotoRow {
   acquisition: Record<string, string>
   captured_on: string
   location: string
+  latitude: number | null
+  longitude: number | null
   featured: boolean
   published: boolean
   sort_order: number
@@ -48,6 +50,8 @@ const blank: PhotoRow = {
   acquisition: {},
   captured_on: '',
   location: '',
+  latitude: null,
+  longitude: null,
   featured: false,
   published: true,
   sort_order: 0
@@ -127,6 +131,36 @@ async function onReferenceFile(event: Event) {
   }
 }
 
+// "23.8103, 90.4125" — the shape Google Maps puts on the clipboard.
+const coordinatePaste = ref('')
+
+function applyCoordinatePaste() {
+  const match = coordinatePaste.value.match(/(-?\d+(?:\.\d+)?)\s*[,\s]\s*(-?\d+(?:\.\d+)?)/)
+  if (!match) return
+  form.value.latitude = Number(match[1])
+  form.value.longitude = Number(match[2])
+  coordinatePaste.value = ''
+}
+
+function onCoordinatePaste(event: ClipboardEvent) {
+  const text = event.clipboardData?.getData('text')
+  if (!text) return
+  event.preventDefault()
+  coordinatePaste.value = text
+  applyCoordinatePaste()
+}
+
+function clearCoordinates() {
+  form.value.latitude = null
+  form.value.longitude = null
+}
+
+/** Empty inputs come back as '' — the column wants a number or null. */
+function toNumberOrNull(value: unknown) {
+  const number = Number(value)
+  return value === '' || value === null || value === undefined || Number.isNaN(number) ? null : number
+}
+
 async function submit() {
   if (!form.value.title || !form.value.slug) {
     toast.add({ title: 'Title and slug are required', color: 'warning' })
@@ -138,6 +172,8 @@ async function submit() {
   }
   const payload = { ...form.value }
   if (!payload.reference?.src) payload.reference = null
+  payload.latitude = toNumberOrNull(payload.latitude)
+  payload.longitude = toNumberOrNull(payload.longitude)
   const saved = await save(payload)
   if (isNew.value && saved?.id) await navigateTo(`/admin/gallery/${saved.id}`)
 }
@@ -270,6 +306,44 @@ async function submit() {
             v-model="form.location"
             class="w-full"
           />
+        </UFormField>
+        <UFormField
+          label="Coordinates"
+          class="sm:col-span-2"
+          help="Where you shot from — this is what puts the photo on the gallery map. Paste a “lat, lng” pair straight from Google Maps, or leave empty to keep the photo off the map."
+        >
+          <div class="flex flex-wrap items-center gap-2">
+            <UInput
+              v-model="coordinatePaste"
+              placeholder="23.8103, 90.4125"
+              class="w-56"
+              @paste="onCoordinatePaste"
+              @keydown.enter.prevent="applyCoordinatePaste"
+              @blur="applyCoordinatePaste"
+            />
+            <UInput
+              v-model="form.latitude"
+              type="number"
+              step="any"
+              placeholder="Latitude"
+              class="w-36"
+            />
+            <UInput
+              v-model="form.longitude"
+              type="number"
+              step="any"
+              placeholder="Longitude"
+              class="w-36"
+            />
+            <UButton
+              v-if="form.latitude !== null || form.longitude !== null"
+              icon="i-lucide-x"
+              color="neutral"
+              variant="ghost"
+              label="Clear"
+              @click="clearCoordinates"
+            />
+          </div>
         </UFormField>
       </section>
 

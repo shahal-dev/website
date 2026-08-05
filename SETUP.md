@@ -12,7 +12,9 @@ Supabase dashboard → **SQL Editor** → New query → paste all of
 [`supabase/schema.sql`](supabase/schema.sql) → **Run**.
 
 That creates the content tables, the `photos` storage bucket, and the row level
-security policies. It's idempotent, so re-running it is harmless.
+security policies. It's idempotent, so re-running it is harmless — and re-running
+it is how you pick up new columns, such as the `latitude` / `longitude` pair the
+gallery map reads.
 
 ## 2. Your admin account
 

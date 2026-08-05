@@ -35,6 +35,9 @@ function mapGallery(row: Dict) {
     acquisition: row.acquisition || {},
     date: row.captured_on,
     location: row.location,
+    // Null unless the shooting site has been pinned in the admin.
+    lat: row.latitude ?? null,
+    lng: row.longitude ?? null,
     featured: row.featured,
     body: row.body
   }

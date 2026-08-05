@@ -78,6 +78,9 @@ create table if not exists public.gallery_photos (
   acquisition jsonb not null default '{}'::jsonb,
   captured_on text,
   location text,
+  -- Shooting site, plotted on the gallery map. Null = not shown on the map.
+  latitude double precision,
+  longitude double precision,
   featured boolean not null default false,
   published boolean not null default true,
   sort_order integer not null default 0,
@@ -145,6 +148,14 @@ create table if not exists public.cv_documents (
   data jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now()
 );
+
+-- ---------------------------------------------------------------------------
+--  Migrations for tables that already exist
+--  (`create table if not exists` above is a no-op once a table is there, so
+--  columns added after the first run need their own statement.)
+-- ---------------------------------------------------------------------------
+alter table public.gallery_photos add column if not exists latitude double precision;
+alter table public.gallery_photos add column if not exists longitude double precision;
 
 -- ---------------------------------------------------------------------------
 --  Triggers
