@@ -43,6 +43,9 @@ const props = withDefaults(defineProps<{
   heading: 'Where I stood'
 })
 
+const colorMode = useColorMode()
+const isDark = computed(() => colorMode.value === 'dark')
+
 const TAU = Math.PI * 2
 const TILE_SIZE = 256
 /** k is the width of the whole world in pixels: k = 256 · 2^z. */
@@ -161,7 +164,7 @@ const homeTransform = computed<ZoomTransform>(() => {
         spanX > 1e-9 ? (w - 2 * padding) / spanX : Infinity,
         spanY > 1e-9 ? (h - 2 * padding) / spanY : Infinity
       )
-    : zoomToK(props.compact ? 10 : 6)
+    : zoomToK(6)
 
   k = Math.max(minK.value, Math.min(props.compact ? zoomToK(12) : zoomToK(9), k))
 
@@ -239,9 +242,8 @@ const isHome = computed(() => {
 
 // ---------------------------------------------------------------------------
 //  Raster basemap
-//  CARTO's dark theme over OpenStreetMap data — the only dark basemap that
-//  sits under a night-sky palette without fighting it. Attribution is required
-//  and rendered in the corner.
+//  CARTO's Positron/Dark Matter over OpenStreetMap data, switched with the
+//  site's color mode. Attribution is required and rendered in the corner.
 // ---------------------------------------------------------------------------
 const tiles = computed(() => {
   const t = transform.value
@@ -264,7 +266,7 @@ const tiles = computed(() => {
     const wrappedX = ((x % span) + span) % span
     return {
       key: `${z}/${x}/${y}`,
-      url: `https://${'abcd'[Math.abs(wrappedX + y) % 4]}.basemaps.cartocdn.com/dark_all/${z}/${wrappedX}/${y}@2x.png`,
+      url: `https://${'abcd'[Math.abs(wrappedX + y) % 4]}.basemaps.cartocdn.com/${isDark.value ? 'dark_all' : 'light_all'}/${z}/${wrappedX}/${y}@2x.png`,
       x: (x + layout.translate[0]) * layout.scale,
       y: (y + layout.translate[1]) * layout.scale,
       size: layout.scale
@@ -401,7 +403,7 @@ function toggle(id: string) {
 
     <div
       ref="wrapper"
-      class="relative overflow-hidden rounded-lg border border-default bg-[#0b0e17]"
+      class="relative overflow-hidden rounded-lg border border-default bg-[#e5e3df] dark:bg-[#0b0e17]"
       :style="{ height: `${size.h}px` }"
     >
       <svg
@@ -519,11 +521,11 @@ function toggle(id: string) {
       <!-- Compact maps have no button row, so they get their own controls -->
       <div
         v-if="compact"
-        class="absolute right-2 top-2 flex flex-col overflow-hidden rounded-md border border-white/15 bg-neutral-900/80 backdrop-blur"
+        class="absolute right-2 top-2 flex flex-col overflow-hidden rounded-md border border-black/10 bg-white/80 backdrop-blur dark:border-white/15 dark:bg-neutral-900/80"
       >
         <button
           type="button"
-          class="px-2 py-1 text-white/70 transition hover:bg-white/10 hover:text-white"
+          class="px-2 py-1 text-black/60 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
           aria-label="Zoom in"
           @click="zoomBy(2)"
         >
@@ -534,7 +536,7 @@ function toggle(id: string) {
         </button>
         <button
           type="button"
-          class="px-2 py-1 text-white/70 transition hover:bg-white/10 hover:text-white"
+          class="px-2 py-1 text-black/60 transition hover:bg-black/5 hover:text-black dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
           aria-label="Zoom out"
           @click="zoomBy(1 / 2)"
         >
@@ -546,7 +548,7 @@ function toggle(id: string) {
       </div>
 
       <!-- Required by the tile licence -->
-      <p class="pointer-events-none absolute bottom-0 right-0 bg-neutral-950/60 px-1.5 py-0.5 text-[9px] text-white/45">
+      <p class="pointer-events-none absolute bottom-0 right-0 bg-white/60 px-1.5 py-0.5 text-[9px] text-black/45 dark:bg-neutral-950/60 dark:text-white/45">
         © OpenStreetMap contributors © CARTO
       </p>
 
@@ -559,14 +561,14 @@ function toggle(id: string) {
       >
         <div
           v-if="activePoint && cardPosition"
-          class="absolute z-10 w-64 rounded-lg border border-white/10 bg-neutral-900/95 p-3 shadow-xl backdrop-blur"
+          class="absolute z-10 w-64 rounded-lg border border-black/10 bg-white/95 p-3 shadow-xl backdrop-blur dark:border-white/10 dark:bg-neutral-900/95"
           :style="cardPosition"
           @mouseleave="activeId = null"
         >
-          <p class="text-sm font-medium text-white">
+          <p class="text-sm font-medium text-black dark:text-white">
             {{ activePoint.site.label }}
           </p>
-          <p class="text-[11px] text-white/50">
+          <p class="text-[11px] text-black/50 dark:text-white/50">
             {{ activePoint.site.lat.toFixed(3) }}°, {{ activePoint.site.lng.toFixed(3) }}° ·
             {{ activePoint.site.photos.length }} {{ activePoint.site.photos.length === 1 ? 'frame' : 'frames' }}
           </p>
@@ -577,7 +579,7 @@ function toggle(id: string) {
             >
               <NuxtLink
                 :to="photo.path"
-                class="flex items-center gap-2 rounded p-1 transition hover:bg-white/10"
+                class="flex items-center gap-2 rounded p-1 transition hover:bg-black/5 dark:hover:bg-white/10"
               >
                 <img
                   :src="photo.thumb"
@@ -586,10 +588,10 @@ function toggle(id: string) {
                   loading="lazy"
                 >
                 <span class="min-w-0">
-                  <span class="block truncate text-xs text-white">{{ photo.title }}</span>
+                  <span class="block truncate text-xs text-black dark:text-white">{{ photo.title }}</span>
                   <span
                     v-if="photo.date"
-                    class="block truncate text-[11px] text-white/50"
+                    class="block truncate text-[11px] text-black/50 dark:text-white/50"
                   >{{ photo.date }}</span>
                 </span>
               </NuxtLink>
@@ -597,7 +599,7 @@ function toggle(id: string) {
           </ul>
           <p
             v-if="activePoint.site.photos.length > 4"
-            class="mt-1 text-[11px] text-white/50"
+            class="mt-1 text-[11px] text-black/50 dark:text-white/50"
           >
             +{{ activePoint.site.photos.length - 4 }} more from here
           </p>
