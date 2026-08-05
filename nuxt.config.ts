@@ -22,7 +22,6 @@ export default defineNuxtConfig({
         // Proves ownership to Google Search Console. The previous site's
         // token went away with its deployment, leaving the property verified
         // only by Google's cached grant — which is revoked on re-check.
-        { name: 'google-site-verification', content: 'zDi2OFFJW4nJeSjniuk0AXS-_fy9UbNXFo4K4zQHGAI' }
       ]
     }
   },
