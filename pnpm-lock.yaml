@@ -38,6 +38,9 @@ importers:
       d3-selection:
         specifier: ^3.0.0
         version: 3.0.0
+      d3-tile:
+        specifier: ^1.0.0
+        version: 1.0.0
       d3-transition:
         specifier: ^3.0.1
         version: 3.0.1(d3-selection@3.0.0)
@@ -3606,6 +3609,9 @@ packages:
   d3-selection@3.0.0:
     resolution: {integrity: sha512-fmTRWbNMmsmWq6xJV8D19U/gw/bwrHfNXxrIN+HfZgnzqTHp9jOmKMhsTUjXOJnZOdZY9Q28y4yebKzqDKlxlQ==}
     engines: {node: '>=12'}
+
+  d3-tile@1.0.0:
+    resolution: {integrity: sha512-79fnTKpPMPDS5xQ0xuS9ir0165NEwwkFpe/DSOmc2Gl9ldYzKKRDWogmTTE8wAJ8NA7PMapNfEcyKhI9Lxdu5Q==}
 
   d3-timer@3.0.1:
     resolution: {integrity: sha512-ndfJ/JxxMd3nw31uyKoY2naivF+r29V+Lc0svZxe1JvvIRmi8hUsrMvdOwgS1o6uBHmiz91geQ0ylPP0aj1VUA==}
@@ -10285,6 +10291,8 @@ snapshots:
       d3-color: 3.1.0
 
   d3-selection@3.0.0: {}
+
+  d3-tile@1.0.0: {}
 
   d3-timer@3.0.1: {}
 

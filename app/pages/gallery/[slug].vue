@@ -18,6 +18,8 @@ interface GalleryDetail {
   acquisition?: Record<string, string>
   date?: string
   location?: string
+  lat?: number | null
+  lng?: number | null
   /** Markdown, written in the admin. */
   body?: string
 }
@@ -61,6 +63,22 @@ const facts = computed(() => {
   ].filter(fact => fact.value)
 })
 
+/** The map component takes a list; here that list is one photo. */
+const mapPhotos = computed(() => {
+  if (!photo.value || photo.value.lat === null || photo.value.lat === undefined) return []
+  return [{
+    slug: photo.value.slug,
+    path: photo.value.path,
+    title: photo.value.title,
+    thumb: photo.value.thumb,
+    alt: photo.value.alt,
+    date: photo.value.date,
+    location: photo.value.location,
+    lat: photo.value.lat,
+    lng: photo.value.lng
+  }]
+})
+
 const url = useSiteUrl()
 
 useJsonLd(() => ({
@@ -73,7 +91,17 @@ useJsonLd(() => ({
   'creator': { '@type': 'Person', 'name': 'MD Shahadat Hossain Shahal' },
   'copyrightHolder': { '@type': 'Person', 'name': 'MD Shahadat Hossain Shahal' },
   ...(photo.value?.date ? { dateCreated: photo.value.date } : {}),
-  ...(photo.value?.location ? { contentLocation: { '@type': 'Place', 'name': photo.value.location } } : {}),
+  ...(photo.value?.location
+    ? {
+        contentLocation: {
+          '@type': 'Place',
+          'name': photo.value.location,
+          ...(photo.value.lat !== null && photo.value.lat !== undefined
+            ? { geo: { '@type': 'GeoCoordinates', 'latitude': photo.value.lat, 'longitude': photo.value.lng } }
+            : {})
+        }
+      }
+    : {}),
   ...(photo.value?.gear?.camera ? { exifData: photo.value.gear.camera } : {})
 }))
 
@@ -167,6 +195,21 @@ useSeoMeta({
           </dd>
         </div>
       </div>
+
+      <ClientOnly>
+        <section
+          v-if="mapPhotos.length"
+          class="my-8"
+        >
+          <h2 class="mb-2 text-sm tracking-wide text-dimmed uppercase">
+            Shot from
+          </h2>
+          <PhotoMap
+            :photos="mapPhotos"
+            compact
+          />
+        </section>
+      </ClientOnly>
 
       <MDC
         v-if="photo.body"

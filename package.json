@@ -23,6 +23,7 @@
     "@vueuse/nuxt": "^14.3.0",
     "d3-geo": "^3.1.1",
     "d3-selection": "^3.0.0",
+    "d3-tile": "^1.0.0",
     "d3-transition": "^3.0.1",
     "d3-zoom": "^3.0.0",
     "motion-v": "^2.3.0",
