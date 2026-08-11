@@ -90,7 +90,10 @@ export default defineContentConfig({
         minRead: z.number(),
         date: z.date(),
         image: z.string().optional().editor({ input: 'media' }),
-        author: createAuthorSchema()
+        author: createAuthorSchema(),
+        // Lets a post open a standalone, self-styled report (served from
+        // public/) instead of rendering its body through the blog template.
+        target: z.string().optional()
       })
     }),
     pages: defineCollection({
