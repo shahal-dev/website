@@ -26,6 +26,7 @@ pnpm lint         # eslint
 | `server/api/content/` | Reads Supabase, falls back to `content/` |
 | `supabase/schema.sql` | Tables, row level security, storage bucket |
 | `scripts/seed-supabase.mjs` | Copies `content/` into Supabase (gallery excluded — it's database-only) |
+| `app/pages/shop/` | Image shop pages using the Nuxt Commerce design inside this app |
 
 ## Adding an astrophoto
 

@@ -5,9 +5,15 @@
 .nitro
 .cache
 dist
+.agent 
+/stars/
+/mountains/
+/sun swang para/
 
 # Node dependencies
 node_modules
+.pnpm-store
+shop/nuxt-commerce/
 
 # Logs
 logs

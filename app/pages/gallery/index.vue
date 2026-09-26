@@ -28,7 +28,8 @@ const slides = computed(() => photos.value.map(photo => ({
   title: photo.title,
   tag: photo.tag,
   caption: photo.description,
-  to: photo.path
+  to: photo.path,
+  shopTo: imageShopHref(photo.slug)
 })))
 
 useSeoMeta({
@@ -81,31 +82,44 @@ useJsonLd(() => ({
           />
         </ClientOnly>
 
-        <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
-          <NuxtLink
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <article
             v-for="photo in photos"
             :key="photo.path"
-            :to="photo.path"
-            class="group relative block overflow-hidden rounded-lg"
+            class="overflow-hidden rounded-lg border border-default"
           >
-            <img
-              :src="photo.thumb"
-              :alt="photo.alt"
-              class="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-56"
-              loading="lazy"
+            <NuxtLink
+              :to="photo.path"
+              class="group block overflow-hidden"
+              :aria-label="`View ${photo.title}`"
             >
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-neutral-950/85 to-transparent p-3">
-              <p class="text-sm font-medium text-white">
-                {{ photo.title }}
-              </p>
-              <p
-                v-if="photo.tag"
-                class="text-xs text-white/70"
+              <img
+                :src="photo.thumb"
+                :alt="photo.alt"
+                class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
               >
-                {{ photo.tag }}
-              </p>
+            </NuxtLink>
+            <div class="flex flex-wrap items-center justify-between gap-3 p-3">
+              <div class="min-w-0">
+                <p class="truncate text-sm font-medium text-highlighted">
+                  {{ photo.title }}
+                </p>
+                <p
+                  v-if="photo.tag"
+                  class="text-xs text-muted"
+                >
+                  {{ photo.tag }}
+                </p>
+              </div>
+              <UButton
+                :to="imageShopHref(photo.slug)"
+                size="sm"
+                icon="i-lucide-shopping-bag"
+                label="Order print"
+              />
             </div>
-          </NuxtLink>
+          </article>
         </div>
       </template>
 

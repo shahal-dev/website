@@ -14,8 +14,6 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
-
   app: {
     head: {
       meta: [
@@ -25,6 +23,8 @@ export default defineNuxtConfig({
       ]
     }
   },
+
+  css: ['~/assets/css/main.css'],
 
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL || 'https://knowshahal.vercel.app',
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     // The admin app is private: never rendered ahead of time, never indexed.
-    '/admin/**': { ssr: false, robots: false, index: false },
+    '/admin/**': { ssr: false },
     '/api/content/**': { cors: false },
 
     // Everything below reads from Supabase, so it must not be frozen at build
@@ -59,6 +59,12 @@ export default defineNuxtConfig({
     '/about': { isr: 3600 },
     '/gallery': { isr: 3600 },
     '/gallery/**': { isr: 3600 },
+    // Availability changes when an order is confirmed, so refresh this page
+    // more often than the editorial pages.
+    '/shop': { isr: 60 },
+    '/shop/collection/**': { isr: 60 },
+    '/shop/product/**': { isr: 60 },
+    '/shop/about': { isr: 3600 },
     '/projects': { isr: 3600 },
     '/blog': { isr: 3600 },
     '/blog/**': { isr: 3600 },

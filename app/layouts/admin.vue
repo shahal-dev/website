@@ -8,6 +8,7 @@ const auth = configured ? useAdminAuth() : null
 const links = [
   { label: 'Dashboard', icon: 'i-lucide-layout-dashboard', to: '/admin' },
   { label: 'Gallery', icon: 'i-lucide-camera', to: '/admin/gallery' },
+  { label: 'Orders', icon: 'i-lucide-shopping-bag', to: '/admin/orders' },
   { label: 'Projects', icon: 'i-lucide-folder', to: '/admin/projects' },
   { label: 'Blog', icon: 'i-lucide-file-text', to: '/admin/blog' },
   { label: 'Publications', icon: 'i-lucide-graduation-cap', to: '/admin/publications' },

@@ -12,6 +12,8 @@ export default defineEventHandler(async (event) => {
     { loc: '/', changefreq: 'weekly', priority: '1.0' },
     { loc: '/about', changefreq: 'monthly', priority: '0.9' },
     { loc: '/gallery', changefreq: 'weekly', priority: '0.9' },
+    { loc: '/shop', changefreq: 'weekly', priority: '0.8' },
+    { loc: '/shop/collection/all', changefreq: 'weekly', priority: '0.7' },
     { loc: '/projects', changefreq: 'monthly', priority: '0.8' },
     { loc: '/publications', changefreq: 'monthly', priority: '0.8' },
     { loc: '/blog', changefreq: 'weekly', priority: '0.7' }
@@ -21,9 +23,10 @@ export default defineEventHandler(async (event) => {
 
   // Dynamic sections — a failure here must not take the sitemap down.
   try {
-    const gallery = await event.$fetch<{ items: Array<{ path: string }> }>('/api/content/gallery')
+    const gallery = await event.$fetch<{ items: Array<{ path: string, slug: string }> }>('/api/content/gallery')
     for (const photo of gallery.items || []) {
       entries.push({ loc: photo.path, changefreq: 'monthly', priority: '0.7' })
+      entries.push({ loc: `/shop/product/${encodeURIComponent(photo.slug)}`, changefreq: 'monthly', priority: '0.6' })
     }
   } catch {
     // ignore

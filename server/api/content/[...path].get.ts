@@ -38,6 +38,7 @@ function mapGallery(row: Dict) {
     // Null unless the shooting site has been pinned in the admin.
     lat: row.latitude ?? null,
     lng: row.longitude ?? null,
+    oneOfOneAvailable: row.one_of_one_available ?? true,
     featured: row.featured,
     body: row.body
   }
@@ -66,6 +67,23 @@ function mapPost(row: Dict) {
     date: row.published_on,
     body: row.body
   }
+}
+
+function mapFilePost(doc: unknown) {
+  const item = doc as Dict
+  const raw = String(item.rawbody || '')
+  const body = raw.replace(/^---\n[\s\S]*?\n---\n?/, '').trim()
+  return { ...item, body }
+}
+
+function mergePosts(filePosts: Dict[], databasePosts: Dict[]) {
+  const merged = new Map<string, Dict>()
+  for (const post of filePosts) merged.set(String(post.path), post)
+  // A database edit intentionally overrides the checked-in version of the
+  // same slug, while file-only posts remain visible on the public index.
+  for (const post of databasePosts) merged.set(String(post.path), post)
+  return [...merged.values()].sort((a, b) =>
+    String(b.date || '').localeCompare(String(a.date || '')))
 }
 
 function mapPublication(row: Dict) {
@@ -123,7 +141,14 @@ export default defineCachedEventHandler(async (event) => {
         } else {
           const { data, error } = await query.order('published_on', { ascending: false })
           if (error) throw error
-          if (data?.length) return { source: 'supabase', items: data.map(mapPost) }
+          if (data?.length) {
+            const docs = await queryCollection(event, 'blog').order('date', 'DESC').all()
+            const filePosts = docs.map(mapFilePost)
+            return {
+              source: 'supabase',
+              items: mergePosts(filePosts, data.map(mapPost))
+            }
+          }
         }
       }
 
@@ -178,14 +203,12 @@ export default defineCachedEventHandler(async (event) => {
   if (collection === 'posts') {
     // `rawbody` is the markdown source — same shape the database rows use, so
     // the blog renders identically from either place.
-    const stripFrontmatter = (raw: string) => raw.replace(/^---\n[\s\S]*?\n---\n?/, '').trim()
-    const toPost = (doc: Dict) => ({ ...doc, body: stripFrontmatter(String(doc.rawbody || '')) })
     if (slug) {
       const doc = await queryCollection(event, 'blog').path(`/blog/${slug}`).first()
-      return { source: 'files', item: doc ? toPost(doc as Dict) : null }
+      return { source: 'files', item: doc ? mapFilePost(doc) : null }
     }
     const docs = await queryCollection(event, 'blog').order('date', 'DESC').all()
-    return { source: 'files', items: docs.map(doc => toPost(doc as Dict)) }
+    return { source: 'files', items: docs.map(mapFilePost) }
   }
 
   if (collection === 'publications') {

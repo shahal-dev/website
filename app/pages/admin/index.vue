@@ -6,6 +6,7 @@ const supabase = useSupabase()
 
 const counts = ref<Record<string, number | null>>({
   gallery_photos: null,
+  shop_orders: null,
   projects: null,
   posts: null,
   publications: null
@@ -13,6 +14,7 @@ const counts = ref<Record<string, number | null>>({
 
 const cards = [
   { key: 'gallery_photos', label: 'Gallery photos', to: '/admin/gallery', icon: 'i-lucide-camera' },
+  { key: 'shop_orders', label: 'Shop orders', to: '/admin/orders', icon: 'i-lucide-shopping-bag' },
   { key: 'projects', label: 'Projects', to: '/admin/projects', icon: 'i-lucide-folder' },
   { key: 'posts', label: 'Blog posts', to: '/admin/blog', icon: 'i-lucide-file-text' },
   { key: 'publications', label: 'Publications', to: '/admin/publications', icon: 'i-lucide-graduation-cap' }

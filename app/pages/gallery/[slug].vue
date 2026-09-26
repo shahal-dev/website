@@ -144,6 +144,20 @@ useSeoMeta({
       </template>
     </UPageHeader>
 
+    <div class="flex flex-wrap items-center gap-3 pb-6">
+      <UButton
+        :to="imageShopHref(photo.slug)"
+        icon="i-lucide-shopping-bag"
+        label="Order print"
+      />
+      <ULink
+        :to="shopHomeHref()"
+        class="text-sm text-muted hover:text-default"
+      >
+        Explore the shop
+      </ULink>
+    </div>
+
     <UPageBody>
       <UCarousel
         v-slot="{ item }"

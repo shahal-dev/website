@@ -28,6 +28,7 @@ interface PhotoRow {
   location: string
   latitude: number | null
   longitude: number | null
+  one_of_one_available: boolean
   featured: boolean
   published: boolean
   sort_order: number
@@ -52,6 +53,7 @@ const blank: PhotoRow = {
   location: '',
   latitude: null,
   longitude: null,
+  one_of_one_available: true,
   featured: false,
   published: true,
   sort_order: 0
@@ -510,6 +512,10 @@ async function submit() {
         <USwitch
           v-model="form.featured"
           label="Featured"
+        />
+        <USwitch
+          v-model="form.one_of_one_available"
+          label="One of one available"
         />
         <UFormField
           label="Sort order"

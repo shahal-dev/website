@@ -8,6 +8,7 @@ interface Photo {
   date?: string
   /** Detail page for this photo. */
   to?: string
+  shopTo?: string
 }
 
 const props = defineProps<{
@@ -81,17 +82,30 @@ function prev() {
         >
           {{ photo.caption }}
         </p>
-        <NuxtLink
-          v-if="photo.to"
-          :to="photo.to"
-          class="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/20"
-        >
-          See the story
-          <UIcon
-            name="i-lucide-arrow-right"
-            class="size-4"
-          />
-        </NuxtLink>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <NuxtLink
+            v-if="photo.shopTo"
+            :to="photo.shopTo"
+            class="inline-flex w-fit items-center gap-1 rounded-full bg-white px-3 py-1.5 text-sm font-medium text-neutral-950 transition hover:bg-white/85"
+          >
+            Order print
+            <UIcon
+              name="i-lucide-shopping-bag"
+              class="size-4"
+            />
+          </NuxtLink>
+          <NuxtLink
+            v-if="photo.to"
+            :to="photo.to"
+            class="inline-flex w-fit items-center gap-1 rounded-full bg-white/10 px-3 py-1.5 text-sm text-white ring-1 ring-white/25 backdrop-blur-sm transition hover:bg-white/20"
+          >
+            See the story
+            <UIcon
+              name="i-lucide-arrow-right"
+              class="size-4"
+            />
+          </NuxtLink>
+        </div>
       </div>
     </component>
 

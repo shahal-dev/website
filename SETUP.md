@@ -16,6 +16,20 @@ security policies. It's idempotent, so re-running it is harmless — and re-runn
 it is how you pick up new columns, such as the `latitude` / `longitude` pair the
 gallery map reads.
 
+The shop also needs the `shop_orders` table and the one of one availability
+column in this schema. Re-run the SQL after updating the site. Orders appear
+under **Admin → Orders**. The fixed prices are BDT 4,000 for a print, BDT 6,000
+for a framed print, and BDT 10,000 for a one of one copy. The longer side is
+24 inches; the shorter side follows the image crop. Checkout instructs customers
+to send the item subtotal to `+8801877585773` and requires the payment transaction
+ID before submission. Shipping is arranged separately. Confirming a one of one order
+marks that copy unavailable. The shop needs published gallery images before
+customers can order.
+
+The shop lives at `/shop` in the same Nuxt app as the portfolio, gallery, and
+admin. Deploy this repository once on Vercel; no second project or shop URL is
+needed.
+
 ## 2. Your admin account
 
 1. **Authentication → Users → Add user.** Your email, a long unique password,
@@ -46,6 +60,12 @@ From **Project Settings → API**:
 | `NUXT_PUBLIC_SUPABASE_URL` | Vercel + `.env` | Project URL |
 | `NUXT_PUBLIC_SUPABASE_ANON_KEY` | Vercel + `.env` | `anon` / publishable key |
 | `SUPABASE_SERVICE_ROLE_KEY` | **local `.env` only** | `service_role` key |
+
+The app connects through the Supabase API. A `postgresql://` direct database
+connection string cannot replace the anon or service-role API key. Copy the
+Project URL and publishable/anon key from the Supabase dashboard's API settings.
+The service-role key is needed only for `pnpm seed`; the website and admin sign-in
+use the public URL and anon key.
 
 The service-role key bypasses all security rules. It is only used by the
 one-off seed script below — never add it to Vercel, and never let it reach the

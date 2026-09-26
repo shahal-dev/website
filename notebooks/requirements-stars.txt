@@ -1,0 +1,11 @@
+# Python >= 3.10 is required by tetra3rs.
+jupyterlab>=4.4,<5
+matplotlib>=3.9,<4
+numpy>=2.0,<3
+pandas>=2.2,<3
+Pillow>=11,<13
+rawpy>=0.25,<0.28
+ExifRead>=3.3,<4
+tetra3rs>=0.13,<0.14
+gaia-catalog>=0.1,<1
+astropy>=7.0,<8

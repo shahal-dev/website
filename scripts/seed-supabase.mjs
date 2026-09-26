@@ -25,6 +25,11 @@ if (!url || !serviceKey) {
   process.exit(1)
 }
 
+if (serviceKey.startsWith('postgresql://') || serviceKey.startsWith('postgres://')) {
+  console.error('SUPABASE_SERVICE_ROLE_KEY must be a Supabase service_role API key, not a PostgreSQL connection URL.')
+  process.exit(1)
+}
+
 const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 const root = process.cwd()
 
