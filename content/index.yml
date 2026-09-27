@@ -76,7 +76,7 @@ faq:
             Radio-galaxy morphology. My thesis and the RGC project build semi-supervised deep-learning models — including equivariant CNNs — that classify bent-tail radio AGNs (Wide-Angle Tail and Narrow-Angle Tail sources) from large radio surveys. More recently I've been writing pipelines that turn Chandra X-ray observations of galaxy clusters into spatially-resolved temperature, pressure, and density maps, partly to hunt for radio mini-haloes.
         - label: Are you open to collaboration?
           content: |
-            Yes. I'm happy to collaborate on machine learning for astronomical images, radio/X-ray data analysis, or instrument-control software. The fastest way to reach me is email — shahadatw6@gmail.com.
+            Yes. I'm happy to collaborate on machine learning for astronomical images, radio/X-ray data analysis, or instrument-control software. The fastest way to reach me is email — shahal@iub.edu.bd.
         - label: Where can I find your publications?
           content: |
             On my publications page, on Google Scholar, and via ORCID — all linked in the footer.

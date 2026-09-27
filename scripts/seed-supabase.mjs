@@ -100,6 +100,8 @@ async function seedProjects() {
       slug: file.replace(/\.yml$/, ''),
       title: data.title,
       description: data.description || '',
+      supervisor: data.supervisor || null,
+      items: data.items || [],
       image_url: imageUrl,
       url: data.url || '#',
       tags: data.tags || [],

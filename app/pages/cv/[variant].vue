@@ -7,7 +7,7 @@ definePageMeta({
 const route = useRoute()
 const variant = computed(() => (route.params.variant === 'compact' ? 'compact' : 'full'))
 
-const cv = await useContentItem<Record<string, unknown>>('cv-document', 'cv')
+const cv = await useContentItem<Record<string, unknown>>('cv-document-print', 'cv')
 if (!cv.value) {
   throw createError({ statusCode: 404, statusMessage: 'CV not found', fatal: true })
 }

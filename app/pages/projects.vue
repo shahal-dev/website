@@ -14,13 +14,20 @@ interface ProjectItem {
   slug?: string
   title: string
   description: string
+  supervisor?: string
+  items?: Array<{ title: string, description: string }>
   image?: string
-  url: string
+  url?: string
   tags?: string[]
   date?: string
 }
 
-const projects = await useContentItems<ProjectItem>('projects', 'projects')
+// Project files are canonical so repository edits are not shadowed by an
+// older Supabase import.
+const { data: projectData } = await useAsyncData('project-file-items', () => {
+  return queryCollection('projects').all()
+})
+const projects = computed<ProjectItem[]>(() => projectData.value || [])
 
 const { global } = useAppConfig()
 
@@ -50,7 +57,7 @@ useJsonLd(() => ({
       'position': index + 1,
       'name': project.title,
       'description': project.description,
-      'url': project.url
+      ...(project.url ? { url: project.url } : {})
     }))
   }
 }))
@@ -101,7 +108,6 @@ useJsonLd(() => ({
       >
         <UPageCard
           :title="project.title"
-          :description="project.description"
           :to="project.url"
           orientation="horizontal"
           variant="naked"
@@ -111,12 +117,41 @@ useJsonLd(() => ({
             wrapper: 'max-sm:order-last'
           }"
         >
+          <template #description>
+            <div class="space-y-3 text-sm text-muted">
+              <p
+                v-if="project.supervisor"
+                class="font-medium text-highlighted"
+              >
+                <span class="text-muted">Supervisor:</span> {{ project.supervisor }}
+              </p>
+              <ol
+                v-if="project.items?.length"
+                class="list-decimal space-y-2 pl-5"
+              >
+                <li
+                  v-for="item in project.items"
+                  :key="item.title"
+                  class="pl-1"
+                >
+                  <span class="font-medium text-highlighted">{{ item.title }}:</span>
+                  {{ item.description }}
+                </li>
+              </ol>
+              <p v-else>
+                {{ project.description }}
+              </p>
+            </div>
+          </template>
           <template #leading>
             <span class="text-sm text-muted">
               {{ String(project.date || '').slice(0, 4) }}
             </span>
           </template>
-          <template #footer>
+          <template
+            v-if="project.url"
+            #footer
+          >
             <ULink
               :to="project.url"
               class="text-sm text-primary flex items-center"

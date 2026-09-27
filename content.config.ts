@@ -73,8 +73,13 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
+        supervisor: z.string().optional(),
+        items: z.array(z.object({
+          title: z.string().nonempty(),
+          description: z.string().nonempty()
+        })).optional(),
         image: z.string().optional().editor({ input: 'media' }),
-        url: z.string().nonempty(),
+        url: z.string().nonempty().optional(),
         tags: z.array(z.string()),
         date: z.date()
       })
@@ -167,6 +172,11 @@ export default defineContentConfig({
         projects: z.array(z.object({
           title: z.string(),
           detail: z.string(),
+          supervisor: z.string().optional(),
+          items: z.array(z.object({
+            title: z.string(),
+            description: z.string()
+          })).optional(),
           url: z.string().optional(),
           compact: z.boolean()
         })),

@@ -1,0 +1,12 @@
+title: "Crito — Observatory Control System"
+description: "A web-controlled system for coordinating automated observations across multiple observatories."
+supervisor: "Syed Ashraf Uddin, PhD"
+items:
+  - title: "Automated transient follow-up"
+    description: "Ingests candidates from the ALeRCE broker, filters them by visibility, applies an approval gate, and controls INDI telescopes with plate-solving, autofocus, and guiding."
+tags:
+  - "INDI"
+  - "Telescope Control"
+  - "TypeScript"
+  - "Astronomy"
+date: "2026"

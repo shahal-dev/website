@@ -205,7 +205,28 @@ function details(items: string[]) {
             {{ item.title }}
           </template>
         </h3>
-        <p class="text-pretty text-muted">
+        <p
+          v-if="item.supervisor"
+          class="text-muted"
+        >
+          Supervisor: {{ item.supervisor }}
+        </p>
+        <ol
+          v-if="item.items?.length && !compact"
+          class="cv-list list-decimal"
+        >
+          <li
+            v-for="part in item.items"
+            :key="part.title"
+          >
+            <span class="font-medium text-highlighted">{{ part.title }}:</span>
+            {{ part.description }}
+          </li>
+        </ol>
+        <p
+          v-else
+          class="text-pretty text-muted"
+        >
           {{ item.detail }}
         </p>
       </div>

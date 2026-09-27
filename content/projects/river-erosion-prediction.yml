@@ -1,6 +1,5 @@
 title: "River Erosion Prediction with ML"
 description: "A machine-learning methodology for detecting and predicting riverbank erosion, developed to support climate-resilience research on ICCCAD's CAP-RES project."
-url: "https://github.com/shahal-dev/erosion-prediction-with-ML"
 tags:
   - "Machine Learning"
   - "Remote Sensing"

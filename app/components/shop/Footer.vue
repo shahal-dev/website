@@ -28,7 +28,7 @@
       <div class="sm:text-right">
         <p>Payment is verified by transaction ID. Shipping is arranged personally.</p>
         <a
-          href="mailto:shahadatw6@gmail.com"
+          href="mailto:shahal@iub.edu.bd"
           class="inline-block mt-3 text-emerald-400 hover:underline"
         >Contact Shahal</a>
       </div>

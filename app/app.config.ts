@@ -5,8 +5,8 @@ export default defineAppConfig({
       light: '/avatar.jpg',
       alt: 'MD Shahadat Hossain Shahal'
     },
-    meetingLink: 'mailto:shahadatw6@gmail.com',
-    email: 'shahadatw6@gmail.com',
+    meetingLink: 'mailto:shahal@iub.edu.bd',
+    email: 'shahal@iub.edu.bd',
     available: true,
     availableLabel: 'Open to research collaborations'
   },

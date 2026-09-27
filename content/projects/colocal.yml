@@ -1,6 +1,5 @@
 title: "COLOCAL — Climate Adaptation Platform"
 description: "A website and content platform for COLOCAL, an ICCCAD-led consortium of universities across least-developed countries co-creating knowledge for local climate-change adaptation."
-url: "https://colocal-website.vercel.app"
 tags:
   - "Vue"
   - "Nuxt"

@@ -10,7 +10,7 @@ if (!page.value) {
   })
 }
 
-const cv = await useContentItem<Record<string, unknown>>('cv-document', 'cv')
+const cv = await useContentItem<Record<string, unknown>>('cv-document-about', 'cv')
 
 // Database copy wins over the checked-in file when the About page has been
 // edited in the admin.
@@ -40,7 +40,7 @@ const { footer } = useAppConfig()
 useJsonLd(() => ({
   '@type': 'Person',
   'name': 'MD Shahadat Hossain Shahal',
-  'jobTitle': cv.value?.role || 'Research Assistant — Radio Astronomy & Machine Learning',
+  'jobTitle': cv.value?.role || 'Research Assistant — Extragalactic Astrophysics & Computational Astronomy',
   'description': description,
   'url': url('/about'),
   'image': url('/portrait.jpg'),

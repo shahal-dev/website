@@ -94,6 +94,8 @@ create table if not exists public.projects (
   slug text not null unique,
   title text not null,
   description text not null default '',
+  supervisor text,
+  items jsonb not null default '[]'::jsonb,
   image_url text,
   url text not null default '#',
   tags text[] not null default '{}',
@@ -103,6 +105,9 @@ create table if not exists public.projects (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.projects add column if not exists supervisor text;
+alter table public.projects add column if not exists items jsonb not null default '[]'::jsonb;
 
 create table if not exists public.posts (
   id uuid primary key default gen_random_uuid(),

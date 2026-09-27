@@ -1,9 +1,0 @@
-title: "Telescope Controller"
-description: "A browser-based dashboard for operating telescopes and organising observation plans across multiple observatory locations — a clean operator interface over the lower-level instrument control used at CASSA."
-url: "https://telescope-controller.vercel.app"
-tags:
-  - "TypeScript"
-  - "Next.js"
-  - "Astronomy"
-  - "Instrumentation"
-date: "2026"

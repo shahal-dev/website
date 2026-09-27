@@ -75,6 +75,8 @@ function importProjects() {
       slug: item.slug || slugify(String(item.title)),
       title: item.title,
       description: item.description || '',
+      supervisor: item.supervisor || null,
+      items: item.items || [],
       image_url: item.image || null,
       url: item.url || '#',
       tags: item.tags || [],

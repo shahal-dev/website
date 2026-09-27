@@ -1,6 +1,9 @@
-title: "Galaxy Cluster X-ray Temperature Mapping"
-description: "A Chandra X-ray data-processing pipeline producing spatially-resolved temperature, pressure, and density maps of galaxy clusters — built to hunt for radio mini-haloes in the intracluster medium."
-url: "https://github.com/shahal-dev/temp_mimic"
+title: "MIMIC — Galaxy Cluster X-ray Temperature Mapping"
+description: "Spatially resolved analysis of the intracluster medium using Chandra X-ray observations."
+supervisor: "Dr Khan Muhammad Bin Asad"
+items:
+  - title: "Intracluster-medium mapping"
+    description: "Builds a Chandra data-processing pipeline that produces temperature, pressure, and density maps of galaxy clusters to search for radio mini-haloes."
 tags:
   - "X-ray Astronomy"
   - "CIAO"

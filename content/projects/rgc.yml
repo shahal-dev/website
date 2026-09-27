@@ -1,6 +1,13 @@
 title: "RGC — Radio Galaxy Classifier"
-description: "A semi-supervised deep-learning pipeline that classifies the morphology of bent radio AGNs — Wide-Angle Tail and Narrow-Angle Tail sources — from large-scale radio survey imagery. This is the core of my undergraduate thesis at CASSA, and the basis of the RGC paper."
-url: "https://github.com/shahal-dev/RGC"
+description: "A three-part radio-astronomy programme combining semi-supervised classification of VLA radio galaxies, annotation and multi-frequency dataset development, and the study of how cluster environments shape bent radio tails."
+supervisor: "Dr Khan Muhammad Bin Asad"
+items:
+  - title: "RGC I"
+    description: "A semi-supervised multiclass model for VLA images."
+  - title: "RGC II"
+    description: "A new annotation toolkit and multi-frequency dataset."
+  - title: "RGC III"
+    description: "The effect of cluster environment on the bending of radio tails."
 tags:
   - "Deep Learning"
   - "PyTorch"

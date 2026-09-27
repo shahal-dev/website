@@ -1,7 +1,7 @@
-title: "Bibaho-Bondhon"
+title: "Nuptial Link"
 description: "A blockchain-based marriage registration platform on Solana, giving marriage records a secure, immutable, and transparent ledger with online registration, e-signatures, and automatic notifications."
+supervisor: "Self-supervised"
 image: /projects/bibaho-bondhon.jpg
-url: "https://bibaho-bondhon.vercel.app/"
 tags:
   - "Solana"
   - "Blockchain"

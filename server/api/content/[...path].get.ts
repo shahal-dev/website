@@ -49,6 +49,8 @@ function mapProject(row: Dict) {
     slug: row.slug,
     title: row.title,
     description: row.description,
+    supervisor: row.supervisor || undefined,
+    items: row.items || [],
     image: row.image_url || undefined,
     url: row.url,
     tags: row.tags || [],
@@ -102,6 +104,13 @@ export default defineCachedEventHandler(async (event) => {
 
   if (!collection) {
     throw createError({ statusCode: 400, statusMessage: 'Missing collection' })
+  }
+
+  // The checked-in CV is canonical for the public page and print downloads.
+  // This prevents an older imported Supabase row from shadowing a deployment.
+  if (collection === 'cv') {
+    const doc = await queryCollection(event, 'cv').first()
+    return { source: 'files', item: doc }
   }
 
   const supabase = serverSupabase()
@@ -159,13 +168,6 @@ export default defineCachedEventHandler(async (event) => {
         if (data?.length) return { source: 'supabase', items: data.map(mapPublication) }
       }
 
-      if (collection === 'cv') {
-        const { data, error } = await supabase.from('cv_documents').select('data').eq('key', 'default').maybeSingle()
-        if (error) throw error
-        if (data?.data && Object.keys(data.data).length) return { source: 'supabase', item: data.data }
-        // fall through to the file version when the CV hasn't been seeded yet
-      }
-
       if (collection === 'pages' && slug) {
         const { data, error } = await supabase.from('pages').select('*').eq('key', slug).maybeSingle()
         if (error) throw error
@@ -192,6 +194,8 @@ export default defineCachedEventHandler(async (event) => {
         slug: String(doc.stem || '').split('/').pop(),
         title: doc.title,
         description: doc.description,
+        supervisor: doc.supervisor,
+        items: doc.items,
         image: doc.image,
         url: doc.url,
         tags: doc.tags,
@@ -214,16 +218,6 @@ export default defineCachedEventHandler(async (event) => {
   if (collection === 'publications') {
     const page = await queryCollection(event, 'publications').first()
     return { source: 'files', items: (page as Dict)?.events || [] }
-  }
-
-  if (collection === 'cv') {
-    const doc = await queryCollection(event, 'cv').first()
-    return { source: 'files', item: doc }
-  }
-
-  if (collection === 'cv') {
-    const doc = await queryCollection(event, 'cv').first()
-    return { source: 'files', item: doc }
   }
 
   if (collection === 'pages' && slug) {
