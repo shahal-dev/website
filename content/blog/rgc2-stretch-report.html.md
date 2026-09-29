@@ -1,5 +1,5 @@
 ---
-title: "Choosing the Intensity Transformation for RGC 2"
+title: "Choosing the Intensity Transformation"
 description: Seventeen candidate stretches, five label-free image tests and one fixed CNN probe, measured on 6249 real radio cutouts — asinh beats linear S/N by +0.126 AUC, for a reason that has nothing to do with information content.
 date: 2026-08-10
 minRead: 15

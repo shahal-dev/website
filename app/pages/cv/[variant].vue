@@ -110,6 +110,8 @@ onMounted(() => {
 }
 
 .cv-sheet {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 21cm;
   margin: 0 auto 3rem;
   background: #ffffff;
@@ -119,17 +121,24 @@ onMounted(() => {
 
 @page {
   size: A4;
-  margin: 1cm;
+  margin: 1.25cm;
 }
 
 @media print {
   .cv-page {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
     background: #ffffff;
+    print-color-adjust: exact;
   }
 
-  /* Scale the one-pager to fit a single A4 page. */
+  /* Scale the one-pager to fit while compensating its layout width. Without
+     the expanded width, CSS zoom leaves a visibly oversized right margin. */
   .cv-sheet :deep(.cv-tight) {
     zoom: 0.83;
+    width: calc(100% / 0.83);
   }
 
   .cv-toolbar {
@@ -137,6 +146,7 @@ onMounted(() => {
   }
 
   .cv-sheet {
+    width: auto;
     max-width: none;
     margin: 0;
     padding: 0;
