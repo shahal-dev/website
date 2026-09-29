@@ -112,16 +112,6 @@ Next, each photograph was plate-solved against a Gaia star catalogue. The soluti
 
 The calibrated estimates are preliminary. Among the closest settings-matched frames, the selected Keokradong exposure measured approximately **21.34 Gaia-G-like mag/arcsec²**, while the two Sanswang exposures averaged approximately **21.39**. That difference—about **0.05 magnitude**, or roughly five percent in sky signal—is smaller than the unquantified systematic uncertainty. It does **not** establish that one site is darker.
 
-There are good reasons for restraint:
-
-- the comparable frames point at different regions of the sky;
-- all three are on or very close to the Galactic plane, where unresolved Milky Way light affects the background;
-- one Sanswang frame points much lower above the horizon than the others;
-- clouds, transparency, vignetting, camera response, and atmospheric extinction are not fully controlled;
-- the camera clock appears to be offset from local time, making time-derived altitude and twilight calculations provisional.
-
-The Andromeda plate solution provided a useful consistency check. From the Keokradong-area latitude, the photographed field can culminate at about 70 degrees altitude—visually close to overhead, though still about 20 degrees from the geometric zenith. That agrees with the field recollection better than the uncorrected EXIF timestamp does.
-
 So the honest conclusion is not a Bortle number and not a winner between two sites. It is this: **the photographs support the impression of very dark conditions, while also showing why a controlled survey is necessary.**
 
 ## The morning after
